@@ -10,16 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    //MARK: Properties.
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    //MARK: Actions.
+    @IBAction func signInButtonTouchUpInside(_ sender: UIButton) {
+        print("touch up inside - sign in")
+        guard let id = self.idTextField.text, let password = self.passwordTextField.text else { return }
+        print("ID : \(id), PW : \(password)")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func signUpButtonTouchUpInside(_ sender: UIButton) {
+        print("touch up inside - sign up")
     }
-
-
 }
-

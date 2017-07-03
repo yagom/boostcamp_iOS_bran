@@ -10,9 +10,9 @@
 		A5C148171F06AFFD00B9F384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C148161F06AFFD00B9F384 /* AppDelegate.swift */; };
 		A5C148191F06AFFD00B9F384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C148181F06AFFD00B9F384 /* ViewController.swift */; };
 		A5C1481C1F06AFFD00B9F384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C1481A1F06AFFD00B9F384 /* Main.storyboard */; };
-		A5C1481E1F06AFFD00B9F384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C1481D1F06AFFD00B9F384 /* Assets.xcassets */; };
 		A5C148211F06AFFD00B9F384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C1481F1F06AFFD00B9F384 /* LaunchScreen.storyboard */; };
 		A5C1482C1F06AFFD00B9F384 /* LoginPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1482B1F06AFFD00B9F384 /* LoginPageTests.swift */; };
+		A5C148751F09E54700B9F384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C148741F09E54700B9F384 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +30,12 @@
 		A5C148161F06AFFD00B9F384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C148181F06AFFD00B9F384 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A5C1481B1F06AFFD00B9F384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A5C1481D1F06AFFD00B9F384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5C148201F06AFFD00B9F384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5C148221F06AFFD00B9F384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5C148271F06AFFD00B9F384 /* LoginPageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginPageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C1482B1F06AFFD00B9F384 /* LoginPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageTests.swift; sourceTree = "<group>"; };
 		A5C1482D1F06AFFD00B9F384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5C148741F09E54700B9F384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +80,8 @@
 				A5C148161F06AFFD00B9F384 /* AppDelegate.swift */,
 				A5C148181F06AFFD00B9F384 /* ViewController.swift */,
 				A5C1481A1F06AFFD00B9F384 /* Main.storyboard */,
-				A5C1481D1F06AFFD00B9F384 /* Assets.xcassets */,
 				A5C1481F1F06AFFD00B9F384 /* LaunchScreen.storyboard */,
+				A5C148741F09E54700B9F384 /* Assets.xcassets */,
 				A5C148221F06AFFD00B9F384 /* Info.plist */,
 			);
 			path = LoginPage;
@@ -182,7 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C148211F06AFFD00B9F384 /* LaunchScreen.storyboard in Resources */,
-				A5C1481E1F06AFFD00B9F384 /* Assets.xcassets in Resources */,
+				A5C148751F09E54700B9F384 /* Assets.xcassets in Resources */,
 				A5C1481C1F06AFFD00B9F384 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +412,7 @@
 				A5C148321F06AFFD00B9F384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5C148331F06AFFD00B9F384 /* Build configuration list for PBXNativeTarget "LoginPageTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				A5C148351F06AFFD00B9F384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
