@@ -1,6 +1,5 @@
 ## 아론 힐리가스의 iOS 프로그래밍
->
-[Quiz](https://github.com/YoonJuHo/boostcamp_iOS_bran/tree/master/week1/WorldTrotter)
+> [Quiz](https://github.com/YoonJuHo/boostcamp_iOS_bran/tree/master/week1/WorldTrotter)
 
 > [WorldTrotter](https://github.com/YoonJuHo/boostcamp_iOS_bran/tree/master/week1/WorldTrotter)
 
