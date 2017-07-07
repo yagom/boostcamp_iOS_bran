@@ -3,7 +3,7 @@
 import UIKit
 
 var str = "Hello, playground"
-str = "Hello, Swift"
+str = "Hello, Swift2"
 
 var nextYear: Int
 var bodyTemp: Float
@@ -24,16 +24,45 @@ for (space, name) in nameByParkingSpace {   // 딕셔너리 나열할 때도 튜
     print("\(space), \(name)")
 }
 
-var reading1: Float?
-var reading2: Float?
-var reading3: Float?
-
-if let r1 = reading1,
-    let r2 = reading2,
-    let r3 = reading3 {
-    let avgReading = (r1 + r2 + r3) / 3
-    
-} else {
-    let errorString = "Instrument reported a reading that was nil."
+// Stride.
+for x in stride(from: 0, to: 100, by: 10) {
+    print(x)
 }
 
+enum MacBook {
+    case air
+    case pro
+}
+
+
+enum Device {
+    case iPhone(Int, String)
+    case iPad(Int)
+    case iWatch(Int)
+    case iMac(Int)
+}
+
+let m1 = Device.iMac(1)
+let m2 = Device.iMac(2)
+let p1 = Device.iPhone(7, "S")
+
+if m1 == Device.iMac(1) {
+    print("ver")
+}
+
+switch p1 {
+case .iPhone(let version, let S):
+    print("This is iPhone\(version)\(S)")
+case .iMac(let version):
+    print("This is iMAC\(version)")
+    break
+default:
+    print("Default")
+}
+
+let b1 = MacBook.air
+let b2 = MacBook.air
+
+if b1 == b2 {
+    print("true")
+}

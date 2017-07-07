@@ -12,6 +12,10 @@
 		A5C148661F09385600B9F384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C148641F09385600B9F384 /* Main.storyboard */; };
 		A5C148681F09385600B9F384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C148671F09385600B9F384 /* Assets.xcassets */; };
 		A5C1486B1F09385600B9F384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C148691F09385600B9F384 /* LaunchScreen.storyboard */; };
+		A5C148771F0A511A00B9F384 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C148761F0A511A00B9F384 /* ConversionViewController.swift */; };
+		A5C1487A1F0A659E00B9F384 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C148791F0A659E00B9F384 /* MapKit.framework */; };
+		A5C1487C1F0B502000B9F384 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1487B1F0B502000B9F384 /* MapViewController.swift */; };
+		A5C1487E1F0BAB5500B9F384 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1487D1F0BAB5500B9F384 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		A5C148671F09385600B9F384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5C1486A1F09385600B9F384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5C1486C1F09385600B9F384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5C148761F0A511A00B9F384 /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
+		A5C148791F0A659E00B9F384 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A5C1487B1F0B502000B9F384 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A5C1487D1F0BAB5500B9F384 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C1487A1F0A659E00B9F384 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,7 @@
 			children = (
 				A5C1485F1F09385600B9F384 /* WorldTrotter */,
 				A5C1485E1F09385600B9F384 /* Products */,
+				A5C148781F0A659E00B9F384 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +66,23 @@
 			children = (
 				A5C148601F09385600B9F384 /* AppDelegate.swift */,
 				A5C148621F09385600B9F384 /* ViewController.swift */,
+				A5C148761F0A511A00B9F384 /* ConversionViewController.swift */,
+				A5C1487B1F0B502000B9F384 /* MapViewController.swift */,
+				A5C1487D1F0BAB5500B9F384 /* WebViewController.swift */,
 				A5C148641F09385600B9F384 /* Main.storyboard */,
 				A5C148671F09385600B9F384 /* Assets.xcassets */,
 				A5C148691F09385600B9F384 /* LaunchScreen.storyboard */,
 				A5C1486C1F09385600B9F384 /* Info.plist */,
 			);
 			path = WorldTrotter;
+			sourceTree = "<group>";
+		};
+		A5C148781F0A659E00B9F384 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5C148791F0A659E00B9F384 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +159,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C148631F09385600B9F384 /* ViewController.swift in Sources */,
+				A5C148771F0A511A00B9F384 /* ConversionViewController.swift in Sources */,
 				A5C148611F09385600B9F384 /* AppDelegate.swift in Sources */,
+				A5C1487E1F0BAB5500B9F384 /* WebViewController.swift in Sources */,
+				A5C1487C1F0B502000B9F384 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +326,7 @@
 				A5C148711F09385600B9F384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

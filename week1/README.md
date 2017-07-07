@@ -18,10 +18,10 @@
 - [x] 읽어오기
 
 ## iOS Human Interface Guidelines 읽어오기
-- [ ] 읽어오기
+- [x] 읽어오기
 
 ## UIKit User Interface Catalog 읽어오기
 - [x] 읽어오기
 
 ## 스위프트 읽어오기 과제 - 첫 번째 읽어오기 과제
-- [ ] 읽어오기
+- [x] 읽어오기
