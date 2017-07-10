@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -57,6 +58,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="signUpButtonTouchUpInside:" destination="dv0-qp-BOk" eventType="touchUpInside" id="Xdl-Xb-RMd"/>
+                                                    <segue destination="B1o-Dr-FXR" kind="presentation" id="qRV-yX-DFf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -91,6 +93,124 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRg-ig-CI1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="852" y="35"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="HSa-QI-o43">
+            <objects>
+                <viewController id="B1o-Dr-FXR" customClass="SignUpViewController" customModule="LoginPage" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rw6-xB-yCG"/>
+                        <viewControllerLayoutGuide type="bottom" id="JAj-qI-sFa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7rM-D5-wht">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e2B-HZ-ZeH">
+                                <rect key="frame" x="16" y="28" width="112.5" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="e2B-HZ-ZeH" secondAttribute="height" multiplier="28:25" id="lIt-Uf-h6r"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="AUk-Hc-UoB" appends="YES" id="wgu-L7-jl3"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AH4-jp-DSf">
+                                <rect key="frame" x="136.5" y="25" width="222.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Check Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZ6-Iw-wEJ">
+                                <rect key="frame" x="136.5" y="101" width="222.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gZU-pG-Yvg">
+                                <rect key="frame" x="16" y="136" width="343" height="485"/>
+                                <color key="backgroundColor" red="0.82647246119999995" green="0.8645125628" blue="0.99952435490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-pt-d4l">
+                                <rect key="frame" x="16" y="629" width="343" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrN-u3-OLH">
+                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchUpInsideCancelButton:" destination="B1o-Dr-FXR" eventType="touchUpInside" id="PID-fG-NVD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-9N-rul">
+                                        <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
+                                        <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="touchUpInsideSignUpButton:" destination="B1o-Dr-FXR" eventType="touchUpInside" id="2kS-q6-XG4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiX-mZ-tao">
+                                <rect key="frame" x="137" y="63" width="222" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="TZ6-Iw-wEJ" firstAttribute="top" secondItem="BiX-mZ-tao" secondAttribute="bottom" constant="8" id="062-Ms-aV4"/>
+                            <constraint firstItem="AH4-jp-DSf" firstAttribute="leading" secondItem="BiX-mZ-tao" secondAttribute="leading" id="6rh-Kd-uNF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="e2B-HZ-ZeH" secondAttribute="leading" id="8We-eG-7EH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gZU-pG-Yvg" secondAttribute="trailing" id="AX7-Iw-mHF"/>
+                            <constraint firstItem="e2B-HZ-ZeH" firstAttribute="top" secondItem="rw6-xB-yCG" secondAttribute="bottom" constant="8" id="DH6-9X-APC"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gZU-pG-Yvg" secondAttribute="leading" id="Fz5-B8-FQr"/>
+                            <constraint firstItem="JAj-qI-sFa" firstAttribute="top" secondItem="yw0-pt-d4l" secondAttribute="bottom" constant="8" id="O2s-0D-ovK"/>
+                            <constraint firstItem="AH4-jp-DSf" firstAttribute="trailing" secondItem="BiX-mZ-tao" secondAttribute="trailing" id="OZx-Ic-ggb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BiX-mZ-tao" secondAttribute="trailing" id="XQM-Zv-S6a"/>
+                            <constraint firstItem="TZ6-Iw-wEJ" firstAttribute="trailing" secondItem="BiX-mZ-tao" secondAttribute="trailing" id="YPa-u0-D4k"/>
+                            <constraint firstItem="yw0-pt-d4l" firstAttribute="top" secondItem="gZU-pG-Yvg" secondAttribute="bottom" constant="8" id="agH-JC-jyv"/>
+                            <constraint firstItem="TZ6-Iw-wEJ" firstAttribute="leading" secondItem="BiX-mZ-tao" secondAttribute="leading" id="eES-hu-ECH"/>
+                            <constraint firstItem="BiX-mZ-tao" firstAttribute="centerY" secondItem="e2B-HZ-ZeH" secondAttribute="centerY" id="j2P-c3-G0s"/>
+                            <constraint firstItem="BiX-mZ-tao" firstAttribute="top" secondItem="AH4-jp-DSf" secondAttribute="bottom" constant="8" id="m67-X8-4vy"/>
+                            <constraint firstItem="gZU-pG-Yvg" firstAttribute="top" secondItem="e2B-HZ-ZeH" secondAttribute="bottom" constant="8" id="q3I-D8-YPS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yw0-pt-d4l" secondAttribute="trailing" id="qEJ-hj-qFl"/>
+                            <constraint firstItem="e2B-HZ-ZeH" firstAttribute="width" secondItem="7rM-D5-wht" secondAttribute="width" multiplier="0.3" id="vUQ-VR-cfr"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="yw0-pt-d4l" secondAttribute="leading" id="yix-Fk-Dbb"/>
+                            <constraint firstItem="BiX-mZ-tao" firstAttribute="leading" secondItem="e2B-HZ-ZeH" secondAttribute="trailing" constant="8" id="yqg-g3-mW2"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Y9A-k8-zZs" appends="YES" id="QKn-3U-KzG"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="bioTextView" destination="gZU-pG-Yvg" id="8Gb-1w-6AA"/>
+                        <outlet property="idTextField" destination="AH4-jp-DSf" id="7lE-o4-6Gu"/>
+                        <outlet property="passwordCheckTextField" destination="TZ6-Iw-wEJ" id="QeS-Ev-SnE"/>
+                        <outlet property="passwordTextField" destination="BiX-mZ-tao" id="1vo-kl-97n"/>
+                        <outlet property="profileImageView" destination="e2B-HZ-ZeH" id="6bZ-mj-Ng3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V55-6G-Ss0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Y9A-k8-zZs" userLabel="Tap Gesture Recognizer For View">
+                    <connections>
+                        <action selector="dismissKeyboardWithSender:" destination="B1o-Dr-FXR" id="IfH-XJ-Ubv"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="AUk-Hc-UoB" userLabel="Tap Gesture Recognizer For ProfileImageView">
+                    <connections>
+                        <action selector="touchUpInsideProfileImageViewWithSender:" destination="B1o-Dr-FXR" id="7WM-hx-gpP"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1669.5999999999999" y="34.632683658170919"/>
         </scene>
     </scenes>
     <resources>

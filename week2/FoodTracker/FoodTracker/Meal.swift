@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Meal {
+class Meal: NSCoder {
     
     var name: String
     var photo: UIImage?
