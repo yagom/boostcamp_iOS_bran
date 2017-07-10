@@ -10,6 +10,8 @@
 
 #### 학습
 
+###### MVC
+
 ###### FootTracker
 
 - Initializer
@@ -41,5 +43,12 @@
 - Accessibility 에서 label, hint, value 에 대해서 공부하기.
 
 - Unit Test 사용
+
+###### 생각과제
+
+- Why H.I.G?
+    > you'll need to meet high expectations for quality and functionality. - H.I.G 발췌
+    > Apple 에서 제공하는 Interface Guideline 을 지킴으로서 일관되고 완성도 있는 애플리케이션을 제작가능함.
+    > 추가적으로 디자이너와 협업하는 과정에서 기본 가이드라인으로서 활용 가능.
 
 ### 질문
