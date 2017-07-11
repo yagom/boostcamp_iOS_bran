@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5294ED81F14A02000DBBA1D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5294ED71F14A02000DBBA1D /* APIManager.swift */; };
+		A5294EDA1F14A94100DBBA1D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5294ED91F14A94100DBBA1D /* Extension.swift */; };
 		A5C148611F09385600B9F384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C148601F09385600B9F384 /* AppDelegate.swift */; };
 		A5C148631F09385600B9F384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C148621F09385600B9F384 /* ViewController.swift */; };
 		A5C148661F09385600B9F384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C148641F09385600B9F384 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A5294ED71F14A02000DBBA1D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A5294ED91F14A94100DBBA1D /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A5C1485D1F09385600B9F384 /* WorldTrotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldTrotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C148601F09385600B9F384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C148621F09385600B9F384 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				A5C148761F0A511A00B9F384 /* ConversionViewController.swift */,
 				A5C1487B1F0B502000B9F384 /* MapViewController.swift */,
 				A5C1487D1F0BAB5500B9F384 /* WebViewController.swift */,
+				A5294ED91F14A94100DBBA1D /* Extension.swift */,
+				A5294ED71F14A02000DBBA1D /* APIManager.swift */,
 				A5C148641F09385600B9F384 /* Main.storyboard */,
 				A5C148671F09385600B9F384 /* Assets.xcassets */,
 				A5C148691F09385600B9F384 /* LaunchScreen.storyboard */,
@@ -158,7 +164,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5294ED81F14A02000DBBA1D /* APIManager.swift in Sources */,
 				A5C148631F09385600B9F384 /* ViewController.swift in Sources */,
+				A5294EDA1F14A94100DBBA1D /* Extension.swift in Sources */,
 				A5C148771F0A511A00B9F384 /* ConversionViewController.swift in Sources */,
 				A5C148611F09385600B9F384 /* AppDelegate.swift in Sources */,
 				A5C1487E1F0BAB5500B9F384 /* WebViewController.swift in Sources */,

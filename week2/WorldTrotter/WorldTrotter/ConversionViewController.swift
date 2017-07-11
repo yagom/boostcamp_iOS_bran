@@ -8,48 +8,10 @@
 
 import UIKit
 
-class MaView: UIView {
-//    override func draw(_ rect: CGRect) {
-////        let UIGraphicsBeginImageContextWithOptions(<#T##size: CGSize##CGSize#>, <#T##opaque: Bool##Bool#>, <#T##scale: CGFloat##CGFloat#>)
-//    }
-}
-
 class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var celsiusLabel: UILabel!
     @IBOutlet var textField: UITextField!
-    var imageView = { () -> UIImageView in 
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 170, height: 150))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = #imageLiteral(resourceName: "gom").withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        imageView.tintColor = UIColor.red
-        imageView.isOpaque = false
-       return imageView
-    }()
-    var imageView2 = { () -> UIImageView in
-        let imageView = UIImageView(frame: CGRect(x: 170, y: 0, width: 170, height: 150))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = #imageLiteral(resourceName: "gom").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        imageView.tintColor = UIColor.red
-        imageView.isOpaque = false
-        return imageView
-    }()
-    var imageView3 = { () -> UIImageView in
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 150, width: 170, height: 150))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = #imageLiteral(resourceName: "car").withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        imageView.tintColor = UIColor.red
-        imageView.isOpaque = false
-        return imageView
-    }()
-    var imageView4 = { () -> UIImageView in
-        let imageView = UIImageView(frame: CGRect(x: 170, y: 150, width: 170, height: 150))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = #imageLiteral(resourceName: "car").withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        imageView.tintColor = UIColor.red
-        imageView.isOpaque = false
-        return imageView
-    }()
     
     var fahrenheitValue: Double? {
         didSet {
@@ -81,10 +43,6 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(self.imageView)
-        self.view.addSubview(self.imageView2)
-        self.view.addSubview(self.imageView3)
-        self.view.addSubview(self.imageView4)
     }
     
     override func viewWillAppear(_ animated: Bool) {

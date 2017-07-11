@@ -17,6 +17,17 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordCheckTextField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
     
+    //MARK: Overiding Properties.
+    override open var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return UIInterfaceOrientationMask.all
+        }
+    }
+    
     //MARK: UIViewController Functions.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +46,7 @@ class SignUpViewController: UIViewController {
         self.idTextField.delegate = self
         self.passwordTextField.delegate = self
         self.passwordCheckTextField.delegate = self
+        
     }
     
     //MARK: Actions.
@@ -64,8 +76,9 @@ class SignUpViewController: UIViewController {
                 return
             }
         }
-        print("Password and Check Password are different.")
+        print("check password")
     }
+    
 }
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
