@@ -19,6 +19,9 @@ class ViewController: UIViewController {
         print("touch up inside - sign in")
         guard let id = self.idTextField.text, let password = self.passwordTextField.text else { return }
         print("ID : \(id), PW : \(password)")
+        
+        let customController = CustomViewController()
+        self.present(customController, animated: true, completion: nil)
     }
     
     @IBAction func signUpButtonTouchUpInside(_ sender: UIButton) {

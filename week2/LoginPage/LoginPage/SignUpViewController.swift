@@ -47,6 +47,11 @@ class SignUpViewController: UIViewController {
         self.passwordTextField.delegate = self
         self.passwordCheckTextField.delegate = self
         
+        
+    }
+    
+    func didChangeKeyboardVisible(){
+        
     }
     
     //MARK: Actions.

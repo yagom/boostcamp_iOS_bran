@@ -36,6 +36,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.panView))
         panGestureRecognizer.cancelsTouchesInView = true
         self.view.addGestureRecognizer(panGestureRecognizer)
+        
     }
     var panCount = 0
     func panView(panGestureRecognizer: UIPanGestureRecognizer){
