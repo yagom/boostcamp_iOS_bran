@@ -17,6 +17,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordCheckTextField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
     
+    // 이미지 피커
+    private lazy var imagePickerController: UIImagePickerController = {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        return imagePickerController
+    }()
+    
     //MARK: Overiding Properties.
     override open var shouldAutorotate: Bool {
         return true
@@ -51,18 +60,16 @@ class SignUpViewController: UIViewController {
     
     //MARK: Actions.
     @IBAction func touchUpInsideProfileImageView(sender: UITapGestureRecognizer) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.allowsEditing = true
-        imagePickerController.delegate = self
+        // 사용자가 이미지 피커를 여러 번 볼 수도 있다는 가정을 하면, 이미지 피커를 매 번 생성하지 않고, 프로퍼티로 활용해 보는 것은 어떨런지
         self.present(imagePickerController, animated: true, completion: nil)
     }
     
     @IBAction func dismissKeyboard(sender: UITapGestureRecognizer) {
-        self.idTextField.resignFirstResponder()
-        self.passwordTextField.resignFirstResponder()
-        self.passwordCheckTextField.resignFirstResponder()
-        self.bioTextView.resignFirstResponder()
+//        self.idTextField.resignFirstResponder()
+//        self.passwordTextField.resignFirstResponder()
+//        self.passwordCheckTextField.resignFirstResponder()
+//        self.bioTextView.resignFirstResponder()
+        self.view.endEditing(true)
     }
     
     @IBAction func touchUpInsideCancelButton(_ sender: UIButton) {
@@ -71,12 +78,17 @@ class SignUpViewController: UIViewController {
     
     @IBAction func touchUpInsideSignUpButton(_ sender: UIButton) {
         if let password = passwordTextField.text, let passwordCheck = passwordCheckTextField.text {
-            if !password.isEmpty && !passwordCheck.isEmpty && password == passwordCheck {
+            if password.isEmpty == false &&
+                passwordCheck.isEmpty == false &&
+                password == passwordCheck {
                 self.dismiss(animated: true, completion: nil)
                 return
+            } else {
+                print("check password")
             }
+        } else {
+            print("some fields are empty")
         }
-        print("check password")
     }
     
 }
@@ -96,7 +108,6 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     
     //MARK: UITextFieldDelegate.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        return textField.resignFirstResponder()
     }
 }

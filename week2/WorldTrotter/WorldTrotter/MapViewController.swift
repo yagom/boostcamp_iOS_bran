@@ -11,6 +11,7 @@ import MapKit
 
 class JHAnnotation: NSObject, MKAnnotation {
 
+    /* 프로퍼티에 적절한 접근권한 줘보기 open, public, internal, fileprivate, private */
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
@@ -35,6 +36,7 @@ class JHAnnotation: NSObject, MKAnnotation {
 class MapViewController: UIViewController {
     
     // View Properties
+    /* 프로퍼티에 적절한 접근권한 줘보기 open, public, internal, fileprivate, private */
     var mapView: MKMapView!
     var zoomInButton: UIButton!
     var zoomOutButton: UIButton!
@@ -46,7 +48,15 @@ class MapViewController: UIViewController {
         }
     }
     
-    var locationManager: CLLocationManager!
+    // 이렇게 해보는 것은 어떨런지?
+    private lazy var locationManager: CLLocationManager = {
+        [unowned self] in
+        
+        let manager = CLLocationManager()
+        manager.delegate = self
+        
+        return manager
+    }()
     
     var hasInteractiveAnnotation: Bool = false
     var interactiveAnnotation: JHAnnotation? = nil
@@ -251,6 +261,9 @@ class MapViewController: UIViewController {
         let circle = MKCircle(center: initialLocation.coordinate, radius: 2000)
         mapView.addOverlays([circle])
         
+//        self.locationManager = CLLocationManager()
+//        self.locationManager.delegate = self
+        
         // CLLocation.
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
@@ -264,8 +277,6 @@ class MapViewController: UIViewController {
         case .restricted:
             break
         }
-        self.locationManager = CLLocationManager()
-        self.locationManager.delegate = self
         
         APIManager.shared.getGeoInfoBikeConvenientFacilities { (stations) in
             self.bikeStations = stations.filter { !$0.0.isEmpty && $0.0 != " " }
@@ -295,7 +306,7 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
         if annotation.isKind(of: MKUserLocation.self) {
 //            return nil
             let annotationView = MKAnnotationView()
-            annotationView.image = "🕴🏻".image()
+            annotationView.image = "🕴🏻".image
             return annotationView
             
         }
@@ -323,7 +334,7 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
             pinView.leftCalloutAccessoryView = UIButton(type: .infoDark)
             pinView.calloutOffset = CGPoint(x: -8, y: 5)
             pinView.isDraggable = true
-            pinView.image = "🚲".image()
+            pinView.image = "🚲".image
             // MKPinAnnotationView Properties.
 //            pinView.pinTintColor = UIColor.black
 //            pinView.animatesDrop = true
