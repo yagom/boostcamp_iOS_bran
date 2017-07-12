@@ -13,6 +13,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var celsiusLabel: UILabel!
     @IBOutlet var textField: UITextField!
     
+    /* 프로퍼티에 적절한 접근권한 줘보기 open, public, internal, fileprivate, private */
     var fahrenheitValue: Double? {
         didSet {
             updateCelsiusLabel()
