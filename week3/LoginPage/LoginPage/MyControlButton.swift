@@ -34,7 +34,7 @@ class MyControlButton: UIControl {
         
         // Title Label.
         self.titleLabel = UILabel()
-        self.titleLabel.text = "MakeDisable"
+        self.titleLabel.text = "MakeButtonDisable"
         self.titleLabel.textAlignment = .center
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.titleLabel)

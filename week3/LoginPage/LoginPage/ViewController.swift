@@ -32,8 +32,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Set button text.
+        let highlightedWithSelected = UIControlState.selected.union(.highlighted)
         self.signInButton.setTitle(title: "Normal", for: .normal)
         self.signInButton.setTitle(title: "Highlighted", for: .highlighted)
+        self.signInButton.setTitle(title: "Highlighted2", for: highlightedWithSelected)
         self.signInButton.setTitle(title: "Selected", for: .selected)
         self.signInButton.setTitle(title: "Disabled", for: .disabled)
         
@@ -42,6 +44,7 @@ class ViewController: UIViewController {
         self.signInButton.setBackgroundImage(image: image.withRenderingMode(.alwaysTemplate), for: .normal)
         self.signInButton.setBackgroundImage(image: image.withRenderingMode(.alwaysTemplate), for: .highlighted)
         self.signInButton.setBackgroundImage(image: image, for: .selected)
+        self.signInButton.setBackgroundImage(image: image, for: highlightedWithSelected)
         
         // Set button target.
         self.signInButton.addTarget(self, action: #selector(self.touchUpInsideSignInButton(sender:)), for: .touchUpInside)
