@@ -64,7 +64,6 @@ class MyControlButton: UIControl {
                 self.sendAction(Selector(action), to: target, for: event)
             }
         }
-        print("touchesBegan")
         
     }
     

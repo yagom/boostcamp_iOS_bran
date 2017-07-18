@@ -166,8 +166,8 @@ class MyButton: UIView {
         self.isHighlighted = false
         
         guard let pointEnded = touches.first?.location(in: self) else { return }
-        let frameEnded = CGRect(origin: pointEnded, size: self.frame.size)
-        let isTouchUpInside = self.frame.intersects(frameEnded)
+        let frameEnded = CGRect(origin: pointEnded, size: .zero)
+        let isTouchUpInside = self.bounds.intersects(frameEnded)
         
         if isTouchUpInside {
             NotificationCenter.default.post(name: Notification.Name.init("TouchUpInside"), object: self)

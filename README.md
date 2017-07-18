@@ -14,6 +14,8 @@ store(추상, 저수준)이 controller(고수준) 밖으로 나옴
 > @IBAction func doSomething(sender: UIButton)
 > @IBAction func doSomething(sender: UIButton, forEvent event: UIEvent)
 
+- hash 값이 중복?
+
 ### 생각해보기
 
 #### UIButton
@@ -58,3 +60,14 @@ store(추상, 저수준)이 controller(고수준) 밖으로 나옴
 - body를 통해 font Size 사용자화에 맞추기.
 
 - private 접근자는 objc에 없기때문에 Selector로 private을 넘기려면 @objc를 붙여야함.
+
+- GestureRecognizer는 cumulative 하지 않는다 -> 같은 제스쳐는 마지막으로 넣어준 target-action적용.
+A gesture recognizer has one or more target-action pairs associated with it. If there are multiple target-action pairs, they are discrete, and not cumulative. Recognition of a gesture results in the dispatch of an action message to a target for each of the associated pairs. The action methods invoked must conform to one of the following signatures:
+
+- stored property는 초기값을 넣어주던가, initializer에서 초기화를 해줘야만 한한다.
+- 하지만 이때는 property observers를 부르지 않는다 -> didSet 안불림.
+- 트릭으로 defer를 한번더 불러줄 수 있지만 좀 더 세심한 코딩이 필요할 듯 함.
+- defer는 에러핸들링이나 condition에 따라 코드 실행순서 달라지는 상관없이 블락이 벗어날때 한번더 실행되는 것.
+> When you assign a default value to a stored property, or set ints initial value within an initializer, vthe value of that property is set directly, without calling any property observers.
+
+- Extension을 활용하면 init을 받아오면서 새로 init을 정의할 수 있습니다~

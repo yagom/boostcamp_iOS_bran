@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: MyButton!
     @IBOutlet weak var signInControlButton: MyControlButton!
+    @IBOutlet weak var myButtonTry: MyButtonTry!
     
     //MARK: Actions.
     @IBAction func signInButtonTouchUpInside(_ sender: UIButton) {
@@ -52,6 +53,17 @@ class ViewController: UIViewController {
         self.signInButton.addTarget(self, action: #selector(self.touchDownSignInButton(sender:)), for: .touchDown)
         
         self.signInControlButton.addTarget(self, action: #selector(self.touchUpInsideDisableButton), for: .touchUpInside)
+        
+        // Set myButton.
+        self.myButtonTry.setTitle(title: "normal", for: .normal)
+        self.myButtonTry.setTitle(title: "highlight", for: .highlighted)
+        self.myButtonTry.setTitle(title: "selected", for: .selected)
+        self.myButtonTry.setTitle(title: "disabled", for: .disabled)
+        self.myButtonTry.setTitle(title: "highlight2", for: highlightedWithSelected)
+        
+        self.myButtonTry.addTarget(self, action: #selector(self.touchUpInsideMyButton(sender:)), for: .touchUpInside)
+        self.myButtonTry.addTarget(self, action: #selector(self.touchUpOutsideMyButton(sender:)), for: .touchUpOutside)
+        self.myButtonTry.addTarget(self, action: #selector(self.touchDownMyButton(sender:)), for: .touchDown)
         
         /*
         self.signInButton.addTarget(self, action: #selector(self.touchUpInsideSignInButton(sender:)), for: .allEvents)
@@ -91,5 +103,20 @@ class ViewController: UIViewController {
     
     @objc private func touchUpOutsideSignInButton(sender: MyButton) {
         print("Touch Up Outside Sign In Button \(sender)")
+    }
+    
+    func touchUpInsideMyButton(sender: MyButtonTry) {
+        // This receive MyButton as parameter.
+        print("touch Up Inside My Button \(sender)")
+    }
+    
+    func touchUpOutsideMyButton(sender: MyButtonTry) {
+        // This receive MyButton as parameter.
+        print("touch Up Outside My Button \(sender)")
+    }
+    
+    func touchDownMyButton(sender: MyButtonTry) {
+        // This receive MyButton as parameter.
+        print("touch DownMy Button \(sender)")
     }
 }

@@ -74,6 +74,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umM-xP-4dE" customClass="MyButtonTry" customModule="LoginPage" customModuleProvider="target">
+                                <rect key="frame" x="72" y="444" width="107.5" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -87,6 +92,7 @@
                     </view>
                     <connections>
                         <outlet property="idTextField" destination="AHV-he-n2N" id="RFe-K4-NSe"/>
+                        <outlet property="myButtonTry" destination="umM-xP-4dE" id="IBS-Q9-WjH"/>
                         <outlet property="passwordTextField" destination="EKE-Sc-1S9" id="GB6-lP-57Z"/>
                         <outlet property="signInButton" destination="pRJ-5L-oHx" id="Q7K-QZ-QVE"/>
                         <outlet property="signInControlButton" destination="0CF-81-XZh" id="mOb-hg-tzI"/>
