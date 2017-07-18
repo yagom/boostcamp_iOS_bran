@@ -241,9 +241,9 @@ class MyButtonTry: UIView {
         _ = self.targets.insert(targetObject)
         if var actions = actionsForTarget[targetObject.hash] {
             actions.append(action)
+            self.actionsForTargetForEvents[Int(controlEvents.rawValue)]?.updateValue(actions, forKey: targetObject.hash)
         } else {
             self.actionsForTargetForEvents[Int(controlEvents.rawValue)]?.updateValue([action], forKey: targetObject.hash)
-            actionsForTarget.updateValue([action], forKey: targetObject.hash)
         }
     }
     

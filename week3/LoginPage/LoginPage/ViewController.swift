@@ -64,6 +64,7 @@ class ViewController: UIViewController {
         self.myButtonTry.addTarget(self, action: #selector(self.touchUpInsideMyButton(sender:)), for: .touchUpInside)
         self.myButtonTry.addTarget(self, action: #selector(self.touchUpOutsideMyButton(sender:)), for: .touchUpOutside)
         self.myButtonTry.addTarget(self, action: #selector(self.touchDownMyButton(sender:)), for: .touchDown)
+        self.myButtonTry.addTarget(self, action: #selector(self.touchDownMyButton2(sender:)), for: .touchDown)
         
         /*
         self.signInButton.addTarget(self, action: #selector(self.touchUpInsideSignInButton(sender:)), for: .allEvents)
@@ -118,5 +119,10 @@ class ViewController: UIViewController {
     func touchDownMyButton(sender: MyButtonTry) {
         // This receive MyButton as parameter.
         print("touch DownMy Button \(sender)")
+    }
+    
+    func touchDownMyButton2(sender: MyButtonTry) {
+        // This receive MyButton as parameter.
+        print("multiple function")
     }
 }
