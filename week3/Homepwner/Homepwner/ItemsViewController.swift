@@ -47,6 +47,7 @@ class ItemsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        /* 이 방법도 좋은 방법입니다만, 하단에 고정적인 내용을 보여주려면 더 좋은 방법은 없을까요? (꼭 row를 추가해야 한다고 생각할 필요는 없습니다) */
         if indexPath.row == self.itemStore.allItems.count {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "NoMoreItemCell", for: indexPath)
@@ -105,7 +106,12 @@ class ItemsViewController: UITableViewController {
             let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .actionSheet)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (alertAction) in
+            /*
+             https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
+             문서의 Resolving Strong Reference Cycles for Closures 챕터 참고
+             */
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {
+                [unowned self, tableView] (alertAction) in
                 self.itemStore.removeItem(item: item)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             })
