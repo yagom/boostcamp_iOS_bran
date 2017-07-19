@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52CD8BB1F1F6440005F9A21 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8BA1F1F6440005F9A21 /* ChatViewController.swift */; };
+		A52CD8BD1F1F6553005F9A21 /* MyTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8BC1F1F6553005F9A21 /* MyTalkCell.swift */; };
+		A52CD8BF1F1F6573005F9A21 /* YouTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8BE1F1F6573005F9A21 /* YouTalkCell.swift */; };
 		A5A036B91F17D5E800D9C9BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A036B81F17D5E800D9C9BA /* AppDelegate.swift */; };
 		A5A036BB1F17D5E800D9C9BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A036BA1F17D5E800D9C9BA /* ViewController.swift */; };
 		A5A036BE1F17D5E800D9C9BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A036BC1F17D5E800D9C9BA /* Main.storyboard */; };
 		A5A036C01F17D5E800D9C9BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5A036BF1F17D5E800D9C9BA /* Assets.xcassets */; };
 		A5A036C31F17D5E800D9C9BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A036C11F17D5E800D9C9BA /* LaunchScreen.storyboard */; };
+		A5B550421F1F4BA8008D8DD3 /* MemberList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A5B550411F1F4BA8008D8DD3 /* MemberList.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A52CD8BA1F1F6440005F9A21 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		A52CD8BC1F1F6553005F9A21 /* MyTalkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTalkCell.swift; sourceTree = "<group>"; };
+		A52CD8BE1F1F6573005F9A21 /* YouTalkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTalkCell.swift; sourceTree = "<group>"; };
 		A5A036B51F17D5E800D9C9BA /* TeamQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A036B81F17D5E800D9C9BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5A036BA1F17D5E800D9C9BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,7 @@
 		A5A036BF1F17D5E800D9C9BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5A036C21F17D5E800D9C9BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5A036C41F17D5E800D9C9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5B550411F1F4BA8008D8DD3 /* MemberList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = MemberList.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +64,11 @@
 			children = (
 				A5A036B81F17D5E800D9C9BA /* AppDelegate.swift */,
 				A5A036BA1F17D5E800D9C9BA /* ViewController.swift */,
+				A52CD8BA1F1F6440005F9A21 /* ChatViewController.swift */,
+				A52CD8BC1F1F6553005F9A21 /* MyTalkCell.swift */,
+				A52CD8BE1F1F6573005F9A21 /* YouTalkCell.swift */,
 				A5A036BC1F17D5E800D9C9BA /* Main.storyboard */,
+				A5B550411F1F4BA8008D8DD3 /* MemberList.rtf */,
 				A5A036BF1F17D5E800D9C9BA /* Assets.xcassets */,
 				A5A036C11F17D5E800D9C9BA /* LaunchScreen.storyboard */,
 				A5A036C41F17D5E800D9C9BA /* Info.plist */,
@@ -124,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B550421F1F4BA8008D8DD3 /* MemberList.rtf in Resources */,
 				A5A036C31F17D5E800D9C9BA /* LaunchScreen.storyboard in Resources */,
 				A5A036C01F17D5E800D9C9BA /* Assets.xcassets in Resources */,
 				A5A036BE1F17D5E800D9C9BA /* Main.storyboard in Resources */,
@@ -138,6 +151,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5A036BB1F17D5E800D9C9BA /* ViewController.swift in Sources */,
+				A52CD8BF1F1F6573005F9A21 /* YouTalkCell.swift in Sources */,
+				A52CD8BD1F1F6553005F9A21 /* MyTalkCell.swift in Sources */,
+				A52CD8BB1F1F6440005F9A21 /* ChatViewController.swift in Sources */,
 				A5A036B91F17D5E800D9C9BA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +318,7 @@
 				A5A036C91F17D5E800D9C9BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
