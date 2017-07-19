@@ -10,6 +10,15 @@ import UIKit
 
 @IBDesignable
 class MyButton: UIView {
+ 
+    private struct EventNotification {
+        struct Touch {
+            static let upInside = Notification.Name(rawValue: "TouchUpInside")
+            static let upOutside = Notification.Name(rawValue: "TouchUpOutside")
+            static let down = Notification.Name(rawValue: "TouchDown")
+        }
+    }
+    
     
     // Subviews Properties.
     private var titleLabel: UILabel!
@@ -169,8 +178,9 @@ class MyButton: UIView {
         let frameEnded = CGRect(origin: pointEnded, size: .zero)
         let isTouchUpInside = self.bounds.intersects(frameEnded)
         
+        /* 실수를 줄이려면 하드코딩 보다는 구조화된 타입을 사용 */
         if isTouchUpInside {
-            NotificationCenter.default.post(name: Notification.Name.init("TouchUpInside"), object: self)
+            NotificationCenter.default.post(name: EventNotification.Touch.upInside, object: self)
             self.isSelected = !self.isSelected
         } else {
             NotificationCenter.default.post(name: Notification.Name.init("TouchUpOutside"), object: self)
@@ -198,9 +208,10 @@ class MyButton: UIView {
         
         switch controlEvents {
         case UIControlEvents.touchDown:
-            NotificationCenter.default.addObserver(observer, selector: action, name: Notification.Name.init("TouchDown"), object: self)
+            /* 실수를 줄이려면 하드코딩 보다는 구조화된 타입을 사용 */
+            NotificationCenter.default.addObserver(observer, selector: action, name: EventNotification.Touch.down, object: self)
         case UIControlEvents.touchUpInside:
-            NotificationCenter.default.addObserver(observer, selector: action, name: Notification.Name.init("TouchUpInside"), object: self)
+            NotificationCenter.default.addObserver(observer, selector: action, name: EventNotification.Touch.upInside, object: self)
         case UIControlEvents.touchUpOutside:
             NotificationCenter.default.addObserver(observer, selector: action, name: Notification.Name.init("TouchUpOutside"), object: self)
         default :

@@ -11,7 +11,8 @@ import Foundation
 class ItemStore {
     open var allItems = [Item]()
     
-    internal func createItem() -> Item {
+    /* internal은 기본 접근 지정자이므로 굳이 필요한 경우가 아니면 명시하지 않아도 됩니다 */
+    @discardableResult internal func createItem() -> Item {
         let newItem = Item(random: true)
         
         self.allItems.append(newItem)
