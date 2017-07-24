@@ -15,13 +15,13 @@
         <scene sceneID="xX8-UH-mZ1">
             <objects>
                 <tableViewController id="5Ga-W0-3tr" customClass="ViewController" customModule="TeamQuiz" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="USD-UR-cHp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="USD-UR-cHp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="Hw1-bG-6YF" style="IBUITableViewCellStyleDefault" id="eBd-Uz-juM">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eBd-Uz-juM" id="PjV-yH-yWy">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -124,24 +124,9 @@
             <point key="canvasLocation" x="3060" y="142.57871064467767"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="wtb-Dr-c8m">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qgO-Zu-VCC" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2zG-iK-WsL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FH5-z8-swr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1181.5999999999999" y="142.57871064467767"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="KB3-0B-x4O">
             <objects>
-                <navigationController storyboardIdentifier="CHAT" automaticallyAdjustsScrollViewInsets="NO" id="Qnd-rI-vad" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CHAT" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qnd-rI-vad" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4om-ii-8bO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

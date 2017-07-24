@@ -17,7 +17,6 @@ class ViewController: UITableViewController {
                 
                 if memberIndexs.contains(String(firstChar)) == false {
                     memberIndexs.append(String(firstChar))
-                    indexForChar.append(index)
 //                    print(firstChar)
                 }
             }
@@ -25,7 +24,6 @@ class ViewController: UITableViewController {
     }
     
     var memberIndexs: [String] = []
-    var indexForChar: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +32,8 @@ class ViewController: UITableViewController {
         let attString = try? NSAttributedString(url: url, options: [:], documentAttributes: nil)
         guard let names = attString?.string.components(separatedBy: "\n") else { return }
         self.members = names
+        
+        self.tableView.register(SwipableCell.self, forCellReuseIdentifier: "SwipableCell")
         
     }
     
@@ -61,17 +61,12 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tempMembers = self.members.filter { String($0.characters.first!) == memberIndexs[indexPath.section] }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SwipableCell", for: indexPath) as? SwipableCell else { return UITableViewCell() }
         cell.textLabel?.text = tempMembers[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let board = UIStoryboard(name: "Main", bundle: nil)
-        let controller = board.instantiateViewController(withIdentifier: "CHAT")
-        self.present(controller, animated: true, completion: nil)
-//        let chatController = ChatViewController(style: .plain)
-//        let navi = UINavigationController(rootViewController: chatController)
-//        self.present(navi, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

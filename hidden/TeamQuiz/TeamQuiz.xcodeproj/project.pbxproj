@@ -10,6 +10,7 @@
 		A52CD8BB1F1F6440005F9A21 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8BA1F1F6440005F9A21 /* ChatViewController.swift */; };
 		A52CD8BD1F1F6553005F9A21 /* MyTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8BC1F1F6553005F9A21 /* MyTalkCell.swift */; };
 		A52CD8BF1F1F6573005F9A21 /* YouTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8BE1F1F6573005F9A21 /* YouTalkCell.swift */; };
+		A52CD8C11F1FA211005F9A21 /* SwipableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8C01F1FA211005F9A21 /* SwipableCell.swift */; };
 		A5A036B91F17D5E800D9C9BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A036B81F17D5E800D9C9BA /* AppDelegate.swift */; };
 		A5A036BB1F17D5E800D9C9BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A036BA1F17D5E800D9C9BA /* ViewController.swift */; };
 		A5A036BE1F17D5E800D9C9BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A036BC1F17D5E800D9C9BA /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		A52CD8BA1F1F6440005F9A21 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A52CD8BC1F1F6553005F9A21 /* MyTalkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTalkCell.swift; sourceTree = "<group>"; };
 		A52CD8BE1F1F6573005F9A21 /* YouTalkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTalkCell.swift; sourceTree = "<group>"; };
+		A52CD8C01F1FA211005F9A21 /* SwipableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipableCell.swift; sourceTree = "<group>"; };
 		A5A036B51F17D5E800D9C9BA /* TeamQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A036B81F17D5E800D9C9BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5A036BA1F17D5E800D9C9BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				A5A036B81F17D5E800D9C9BA /* AppDelegate.swift */,
 				A5A036BA1F17D5E800D9C9BA /* ViewController.swift */,
 				A52CD8BA1F1F6440005F9A21 /* ChatViewController.swift */,
+				A52CD8C01F1FA211005F9A21 /* SwipableCell.swift */,
 				A52CD8BC1F1F6553005F9A21 /* MyTalkCell.swift */,
 				A52CD8BE1F1F6573005F9A21 /* YouTalkCell.swift */,
 				A5A036BC1F17D5E800D9C9BA /* Main.storyboard */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52CD8C11F1FA211005F9A21 /* SwipableCell.swift in Sources */,
 				A5A036BB1F17D5E800D9C9BA /* ViewController.swift in Sources */,
 				A52CD8BF1F1F6573005F9A21 /* YouTalkCell.swift in Sources */,
 				A52CD8BD1F1F6553005F9A21 /* MyTalkCell.swift in Sources */,
