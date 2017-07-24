@@ -111,7 +111,7 @@ class ItemsViewController: UITableViewController {
              문서의 Resolving Strong Reference Cycles for Closures 챕터 참고
              */
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {
-                [unowned self, tableView] (alertAction) in
+                [unowned self, unowned tableView] (alertAction) in
                 self.itemStore.removeItem(item: item)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             })
