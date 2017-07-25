@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  ViewController18.swift
 //  TouchTracker
 //
-//  Created by JU HO YOON on 2017. 7. 11..
+//  Created by JU HO YOON on 2017. 7. 25..
 //  Copyright © 2017년 YJH Studio. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
-
+class ViewController18: UIViewController, UIGestureRecognizerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -71,7 +71,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touchBegan")
     }
-
-
+    
+    
 }
-
