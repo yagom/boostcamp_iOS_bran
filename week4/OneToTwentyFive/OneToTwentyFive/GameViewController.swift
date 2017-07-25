@@ -10,6 +10,8 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    // MARK: SubViews.
+    
     // IBOutlet Subviews.
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var bestRecordLabel: UILabel!
@@ -17,21 +19,26 @@ class GameViewController: UIViewController {
     @IBOutlet weak var numberButtonContainerView: UIView!
     @IBOutlet weak var historyButton: UIButton!
     
-    // Property for game.
-    private var gameRowSize: Int = 2
+    // Number Buttons.
+    var numberButtons: [UIButton]!
+    
+    // MARK: Properties.
+    
+    // Game Property.
+    private var numberMatrix: NumberSetMatrix!
+    private var latestSelectedNumber: Int = 0
+    private var gameRowSize: Int = 5
     private var gameSize: Int {
         get {
             return self.gameRowSize * self.gameRowSize
         }
     }
-    var numberButtons: [UIButton]!
-    private var numberMatrix: NumberSetMatrix!
-    private var latestSelectedNumber: Int = 0
     private var records: [Record]! {
         didSet {
             self.updateBestRecord()
         }
     }
+    // Time Property.
     private var bestRecord: Record?
     private var timer: Timer?
     private var startTime: Date?
@@ -159,7 +166,6 @@ class GameViewController: UIViewController {
         verticalStackView.bottomAnchor.constraint(equalTo: self.numberButtonContainerView.bottomAnchor).isActive = true
     }
     
-    
     private func updateBestRecord(){
         if self.bestRecord == nil {
             self.bestRecord = Record(name: "No Record", clearTime: "59:59:99", clearDate: Date())
@@ -173,8 +179,11 @@ class GameViewController: UIViewController {
             }
             return time1.compare(time2) == .orderedAscending
         }
-        guard let bestRecord = sortedRecords.first else { return }
-        self.bestRecordLabel.text = "\(bestRecord.name) \(bestRecord.clearTime)"
+        if let bestRecord = sortedRecords.first {
+            self.bestRecordLabel.text = "\(bestRecord.name) \(bestRecord.clearTime)"
+        } else {
+            self.bestRecordLabel.text = "- --:--:--"
+        }
     }
     
     // MARK: Game Control.
@@ -190,7 +199,6 @@ class GameViewController: UIViewController {
     }
     
     @objc private func numberButtonDidTouchUpInside(sender: UIButton) {
-        print(sender.tag)
         if sender.tag == self.latestSelectedNumber + 1 {
             self.latestSelectedNumber = sender.tag
             
@@ -218,7 +226,6 @@ class GameViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "OK", style: .default) {
             [unowned alertController] (action) in
-            // log record.
             guard let textField = alertController.textFields?.first else { return }
             guard let text = textField.text else { return }
             

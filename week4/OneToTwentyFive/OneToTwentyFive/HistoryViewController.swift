@@ -10,13 +10,17 @@ import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // Subviews.
     @IBOutlet weak var tableView: UITableView!
+    
+    // Data Property.
     var records: [Record]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.transitioningDelegate = self
+        
         self.records = GameManager.shared.records
         
         self.tableView.tableFooterView = UIView()
@@ -28,6 +32,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.records = GameManager.shared.records
         self.tableView.reloadData()
     }
+    
+    // MARK: IBActions.
     
     @IBAction func closeButtonDidTouchUpInside(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -57,8 +63,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
+        
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    // MARK: TableView Delegate, Datsource.
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -86,7 +95,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") {
-            [unowned self] (action, indexPath) in
+            [unowned self, unowned tableView] (action, indexPath) in
             GameManager.shared.deleteRecord(record: self.records[indexPath.row])
             self.records.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -95,6 +104,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 }
 
+// MARK: UIViewControllerTransitioningDelegate.
 extension HistoryViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SwipeTransition(type: .present)
