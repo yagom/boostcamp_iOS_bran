@@ -48,6 +48,14 @@ TimeInterval로 프로퍼티를 줄 때, Double로 프로퍼티를 줄 때 decod
     - Present, Dimiss될 때 Transion이 적용될 Controller에게 TransioningDelegate를 준다.
     - forPresent, forDimiss메서드를 오버라이드해서 알맞은 AnimatedTransitioning 인스턴스를 반환.
 
+#### UIView Animation
+
+- .repeat 으로 해놓으면 뷰 컨트롤러가 사라질 때 해당 뷰의 transform으로 변경해놓고 끝난다. 그래서 다시 화면이 로드 될때 transform = 1.5 to transform = 1.5이므로 애니메이션 효과가 없는 것이지요.
+
+- 팁으로 repeat된 애니메이션을 제거할때는 layer의 remove애니메이션을 하면 될것이다.
+
+- 또한 trasform을 초기값(원래 형태)를 가지고 있는 .identity를 활용해보자.
+
 #### Animation
 
 ### 한번 더 생각해보기
@@ -64,3 +72,4 @@ TimeInterval로 프로퍼티를 줄 때, Double로 프로퍼티를 줄 때 decod
 
 - view에서 endEditing(_:) 호출은 계층 구조의 어느 텍스트 필드가 퍼스트 리스폰더인지 확인 후 그 뷰.resignFirstResponder() 함.
 
+- 확실한 Reference Type의 이점이 필요할 때 빼고는 구조체를 활요하자.

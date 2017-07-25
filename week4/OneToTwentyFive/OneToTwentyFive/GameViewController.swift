@@ -11,7 +11,6 @@ import UIKit
 class GameViewController: UIViewController {
     
     // IBOutlet Subviews.
-    
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var bestRecordLabel: UILabel!
     @IBOutlet weak var gameTimeLabel: UILabel!
@@ -19,7 +18,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var historyButton: UIButton!
     
     // Property for game.
-    private var gameRowSize: Int = 5
+    private var gameRowSize: Int = 2
     private var gameSize: Int {
         get {
             return self.gameRowSize * self.gameRowSize
@@ -59,23 +58,25 @@ class GameViewController: UIViewController {
     
     @IBAction func homeButtonDidTouchUpInside(_ sender: UIButton) {
         self.endGameTimer()
-//        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func historyButtonDidTouchUpInside(_ sender: UIButton) {
-        let historyViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HistoryViewController") as! HistoryViewController
-        self.present(historyViewController, animated: true, completion: nil)
+        guard let mainViewController = self.presentingViewController as? MainViewController else { return }
+        self.present(mainViewController.historyViewController, animated: true, completion: nil)
     }
     
     @IBAction func startButtonDidTouchUpInside(_ sender: UIButton) {
+        sender.isHidden = true
+        self.numberButtonContainerView.isHidden = false
+        self.latestSelectedNumber = 0
         self.numberMatrix.shuffle()
         self.resetNumberButtons()
-        self.numberButtonContainerView.isHidden = false
+        
         self.startGameTimer()
-        sender.isHidden = true
     }
     
     // MARK: Time Control.
+
     private func startGameTimer() {
         self.historyButton.isEnabled = false
         self.historyButton.alpha = 0.5
@@ -110,7 +111,6 @@ class GameViewController: UIViewController {
         self.numberMatrix = NumberSetMatrix(row: self.gameRowSize, column: self.gameRowSize, randomFilled: true)
         
         self.setupNumberButtons()
-    
     }
     
     private func setupNumberButtons(){
@@ -181,13 +181,16 @@ class GameViewController: UIViewController {
     
     private func resetNumberButtons(){
 //        self.numberButtons.forEach { $0.alpha = 1; $0.isUserInteractionEnabled = true }
-        for button in self.numberButtons {
+        for (index, button) in self.numberButtons.enumerated() {
             button.alpha = 1
             button.isUserInteractionEnabled = true
+            button.tag = numberMatrix[index]
+            button.setTitle(String(numberMatrix[index]), for: .normal)
         }
     }
     
     @objc private func numberButtonDidTouchUpInside(sender: UIButton) {
+        print(sender.tag)
         if sender.tag == self.latestSelectedNumber + 1 {
             self.latestSelectedNumber = sender.tag
             
@@ -234,4 +237,3 @@ class GameViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 }
-

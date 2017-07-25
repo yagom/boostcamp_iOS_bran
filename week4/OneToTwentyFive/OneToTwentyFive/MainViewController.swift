@@ -35,22 +35,22 @@ class MainViewController: UIViewController {
     @IBAction func historyButtonDidTouchUpInside(_ sender: UIButton) {
         self.present(self.historyViewController, animated: true, completion: nil)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-//        UIView.animateKeyframes(withDuration: 1, delay: 0, options: .repeat, animations: {
-//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
-//                
-//                self.titleLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//            })
-//            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-//                self.titleLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
-//            })
-//        }, completion: nil)
+//        self.view.layer.removeAllAnimations()
+//        self.titleLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        self.titleLabel.transform = .identity
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
             self.titleLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         }, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }

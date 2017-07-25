@@ -15,10 +15,18 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.transitioningDelegate = self
+        self.records = GameManager.shared.records
+        
+        self.tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         self.records = GameManager.shared.records
+        self.tableView.reloadData()
     }
     
     @IBAction func closeButtonDidTouchUpInside(_ sender: UIButton) {
@@ -26,9 +34,30 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func resetButtonDidTouchUpInside(_ sender: UIButton) {
-        GameManager.shared.resetRecords()
-        self.records = []
-        self.tableView.reloadData()
+        let alertController = UIAlertController(title: "REALLY?", message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .destructive) {
+            [unowned self] (action) in
+            
+            GameManager.shared.resetRecords()
+            self.records = []
+            
+            var indexPaths: [IndexPath] = []
+            for section in 0 ..< self.tableView.numberOfSections {
+                for row in 0 ..< self.tableView.numberOfRows(inSection: section) {
+                    let indexPath = IndexPath(row: row, section: section)
+                    indexPaths.append(indexPath)
+                }
+            }
+            self.tableView.deleteRows(at: indexPaths, with: .automatic)
+            
+//            guard let rows = self.tableView.indexPathsForVisibleRows else { return }
+//            self.tableView.deleteRows(at: rows, with: .automatic)
+//            self.tableView.reloadData()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,6 +70,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        
         cell.textLabel?.text = self.records[indexPath.row].name
         cell.detailTextLabel?.text = self.records[indexPath.row].clearTime.description
         return cell
@@ -48,12 +78,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

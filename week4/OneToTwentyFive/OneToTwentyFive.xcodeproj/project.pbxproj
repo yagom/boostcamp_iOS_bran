@@ -15,7 +15,6 @@
 		A52CD8E11F223F0A005F9A21 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8E01F223F0A005F9A21 /* HistoryViewController.swift */; };
 		A52CD8E31F22610B005F9A21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8E21F22610B005F9A21 /* GameViewController.swift */; };
 		A52CD8E51F2329A7005F9A21 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8E41F2329A7005F9A21 /* Record.swift */; };
-		A52CD8E71F233260005F9A21 /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8E61F233260005F9A21 /* NumberCell.swift */; };
 		A52CD8E91F233759005F9A21 /* NumberSetMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8E81F233759005F9A21 /* NumberSetMatrix.swift */; };
 		A52CD8EB1F2375AB005F9A21 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8EA1F2375AB005F9A21 /* GameManager.swift */; };
 		A52CD8EF1F245232005F9A21 /* SwipeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8EE1F245232005F9A21 /* SwipeTransition.swift */; };
@@ -33,7 +32,6 @@
 		A52CD8E01F223F0A005F9A21 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A52CD8E21F22610B005F9A21 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A52CD8E41F2329A7005F9A21 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		A52CD8E61F233260005F9A21 /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
 		A52CD8E81F233759005F9A21 /* NumberSetMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberSetMatrix.swift; sourceTree = "<group>"; };
 		A52CD8EA1F2375AB005F9A21 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		A52CD8EE1F245232005F9A21 /* SwipeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTransition.swift; sourceTree = "<group>"; };
@@ -72,9 +70,8 @@
 			children = (
 				A52CD8CE1F223ED4005F9A21 /* AppDelegate.swift */,
 				A52CD8E41F2329A7005F9A21 /* Record.swift */,
-				A52CD8E61F233260005F9A21 /* NumberCell.swift */,
-				A52CD8E81F233759005F9A21 /* NumberSetMatrix.swift */,
 				A52CD8EA1F2375AB005F9A21 /* GameManager.swift */,
+				A52CD8E81F233759005F9A21 /* NumberSetMatrix.swift */,
 				A52CD8D01F223ED4005F9A21 /* MainViewController.swift */,
 				A52CD8E21F22610B005F9A21 /* GameViewController.swift */,
 				A52CD8E01F223F0A005F9A21 /* HistoryViewController.swift */,
@@ -164,7 +161,6 @@
 				A52CD8E31F22610B005F9A21 /* GameViewController.swift in Sources */,
 				A52CD8EB1F2375AB005F9A21 /* GameManager.swift in Sources */,
 				A52CD8E11F223F0A005F9A21 /* HistoryViewController.swift in Sources */,
-				A52CD8E71F233260005F9A21 /* NumberCell.swift in Sources */,
 				A52CD8E51F2329A7005F9A21 /* Record.swift in Sources */,
 				A52CD8E91F233759005F9A21 /* NumberSetMatrix.swift in Sources */,
 				A52CD8D11F223ED4005F9A21 /* MainViewController.swift in Sources */,

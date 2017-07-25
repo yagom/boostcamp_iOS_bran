@@ -30,7 +30,6 @@ class NumberSetMatrix {
     }
     
     convenience init(row: Int, column: Int, randomFilled filled: Bool) {
-        
         self.init(row: row, column: column)
         
         if filled {
