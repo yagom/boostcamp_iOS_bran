@@ -159,7 +159,7 @@ class GameViewController: UIViewController {
         verticalStackView.bottomAnchor.constraint(equalTo: self.numberButtonContainerView.bottomAnchor).isActive = true
     }
     
-    
+    /* History 화면에서 최고 기록을 제거해도 되돌아 왔을때 최고기록이 변경되어 있지 않군요! 어떻게 하면 좋을까요? */
     private func updateBestRecord(){
         if self.bestRecord == nil {
             self.bestRecord = Record(name: "No Record", clearTime: "59:59:99", clearDate: Date())
