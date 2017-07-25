@@ -4,6 +4,10 @@
 
 TimeInterval로 프로퍼티를 줄 때, Double로 프로퍼티를 줄 때 decode가 안되는 듯.
 
+교재 13장에서 IBOutlet을 strong으로 주는데 특별한 이유가 있는지.
+기존에 IB에서 만든 subView들은 superView를 가지고 있으므로 weak으로 해주는 것으로 알고 있었음.
+사라졌다가 다시 만들 필요가 있을 때 strong으로 알고 있어도 되는지.
+
 ### 생각해보기
 
 #### Archive
@@ -48,4 +52,15 @@ TimeInterval로 프로퍼티를 줄 때, Double로 프로퍼티를 줄 때 decod
 
 ### 한번 더 생각해보기
 
--TableView나 CollectionView에서 Cell을 삭제할 때 DataSource의 값에서 실제 값을 제거 후 Deleterow(item)을 호출하자.
+- TableView나 CollectionView에서 Cell을 삭제할 때 DataSource의 값에서 실제 값을 제거 후 Deleterow(item)을 호출하자.
+
+- 컨텐트 크기 유지 우선순위 -> 높을 수록 자신의 크기를 유지하려는 정도가 강함.
+
+- 세그웨이를 통해 뷰 컨트롤러간 상호작용을 설정할 수 있다.
+
+- 네비게이션 컨트롤러(뷰 컨트롤러간 역관이 있을 경우)를 활용할 때 루트 뷰 컨트롤러에서 모든 데이터를 가지고 있고, 데이터의 일부를 다음 뷰 컨트롤러에 전달하는 것이 깔끔하고 효율적임.
+
+- 세그웨이를 통한다면, prepare를 통해 다음 컨트롤러에게 데이터 전달하기.
+
+- view에서 endEditing(_:) 호출은 계층 구조의 어느 텍스트 필드가 퍼스트 리스폰더인지 확인 후 그 뷰.resignFirstResponder() 함.
+

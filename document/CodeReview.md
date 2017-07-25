@@ -90,3 +90,31 @@ private lazy var locationManager: CLLocationManager = {
     return manager
 }()
 ```
+
+# 3주차
+
+### 패턴
+
+> 실수를 줄이려면 하드코딩 보다는 구조화된 타입을 사용
+
+```swift
+NotificationCenter.default.post(name: Notification.Name.init("TouchUpInside"), object: self)
+````
+
+```swift
+    NotificationCenter.default.post(name: EventNotification.Touch.upInside, object: self)
+
+    private struct EventNotification {
+        struct Touch {
+            static let upInside = Notification.Name(rawValue: "TouchUpInside")
+            static let upOutside = Notification.Name(rawValue: "TouchUpOutside")
+            static let down = Notification.Name(rawValue: "TouchDown")
+        }
+    }
+```
+
+> ARC
+
+> 클로저에서도 순환참조가 이루어 질 수 있으므로
+
+> weak, unowned 해야하는데 내가 절대 사라질 일이 없으면 unowned(weak이 nil값을 가질 수 있는 것과 차이를 둠)
