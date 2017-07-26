@@ -216,13 +216,14 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-Eh-2B2">
-                                        <rect key="frame" x="0.0" y="90" width="343" height="483"/>
+                                        <rect key="frame" x="0.0" y="90" width="343" height="477"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9n-2t-mkV">
-                                        <rect key="frame" x="0.0" y="573" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="567" width="343" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Chnage Date"/>
                                         <connections>
                                             <segue destination="QNh-Zb-4I8" kind="show" identifier="ChangeDate" id="mpd-5x-rJi"/>
@@ -291,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6f4-FK-8n1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3522" y="59"/>
+            <point key="canvasLocation" x="3520.8000000000002" y="58.920539730134934"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vWA-dx-jbv">

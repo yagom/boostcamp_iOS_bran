@@ -86,7 +86,7 @@ class GameViewController: UIViewController {
 
     private func startGameTimer() {
         self.historyButton.isEnabled = false
-        self.historyButton.alpha = 0.5
+        
         self.startTime = Date()
         self.timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) {
             [unowned self] (timer) in
@@ -97,7 +97,6 @@ class GameViewController: UIViewController {
     
     private func endGameTimer() {
         self.historyButton.isEnabled = true
-        self.historyButton.alpha = 1
         self.timer?.invalidate()
         self.timer = nil
     }
@@ -118,6 +117,7 @@ class GameViewController: UIViewController {
         self.numberMatrix = NumberSetMatrix(row: self.gameRowSize, column: self.gameRowSize, randomFilled: true)
         
         self.setupNumberButtons()
+        self.historyButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .disabled)
     }
     
     private func setupNumberButtons(){

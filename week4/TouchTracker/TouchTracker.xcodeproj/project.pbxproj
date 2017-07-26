@@ -15,6 +15,7 @@
 		A52CD8FB1F271F1F005F9A21 /* ViewController18.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8FA1F271F1F005F9A21 /* ViewController18.swift */; };
 		A52CD8FD1F272032005F9A21 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8FC1F272032005F9A21 /* Line.swift */; };
 		A52CD8FF1F2720DC005F9A21 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8FE1F2720DC005F9A21 /* DrawView.swift */; };
+		A52CD9031F2761F4005F9A21 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD9021F2761F4005F9A21 /* Circle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A52CD8FA1F271F1F005F9A21 /* ViewController18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController18.swift; sourceTree = "<group>"; };
 		A52CD8FC1F272032005F9A21 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		A52CD8FE1F2720DC005F9A21 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		A52CD9021F2761F4005F9A21 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				A5294EC51F148F9600DBBA1D /* AppDelegate.swift */,
 				A52CD8FC1F272032005F9A21 /* Line.swift */,
+				A52CD9021F2761F4005F9A21 /* Circle.swift */,
 				A52CD8FE1F2720DC005F9A21 /* DrawView.swift */,
 				A5294EC71F148F9600DBBA1D /* ViewController.swift */,
 				A52CD8FA1F271F1F005F9A21 /* ViewController18.swift */,
@@ -151,6 +154,7 @@
 				A52CD8FD1F272032005F9A21 /* Line.swift in Sources */,
 				A52CD8FB1F271F1F005F9A21 /* ViewController18.swift in Sources */,
 				A5294EC61F148F9600DBBA1D /* AppDelegate.swift in Sources */,
+				A52CD9031F2761F4005F9A21 /* Circle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
