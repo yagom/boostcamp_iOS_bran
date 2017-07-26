@@ -6,6 +6,9 @@
 //  Copyright © 2017년 YJH Studio. All rights reserved.
 //
 
+/* 주석처리할 코드들은 commit 하지 않는게 좋습니다. 주석으로 남겨두려면 남긴 이유에 대한 명확한 설명이 있다면 좋습니다.
+ 주석 대신에 commit 메세지들로 변경된 코드의 내용을 명확히 설명하는 것이 더욱 좋겠습니다. */
+
 import UIKit
 
 class ItemsViewController: UITableViewController {
