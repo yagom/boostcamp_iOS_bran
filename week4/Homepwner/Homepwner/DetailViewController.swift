@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
         }
     }
     
+    // 접근수준 지정자 설정해보기
     let numberFormatter: NumberFormatter = {
        let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
