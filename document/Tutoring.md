@@ -72,3 +72,65 @@
 - 로그아웃16.국내앱들은거의적용을안함... 적용난이도가어렵기때문에-능력과여유가생긴다면꼭적용해보자
 - 오토레이아웃을이용해부모 View의비율로정하고싶다면,width, height에 multiply를...
 - 디자이너의요구사항변경이잦은데, 스냅킷을이용하면처음에는만들기힘들어도대응하기는쉬워짐
+
+
+# 4주차
+
+### 모게이
+
+- Commit단위와 메세지는 매우 중요합니다.
+
+- 예를들어, 저장하는 모듈, 저장을 불러오는 모듈 등 커밋의 단위를 알맞게 설정하는 것은 중요합니다.
+
+- 스토리 보드를 사용할 경우 conflict될 가능성이 매우 높으므로 하나의 main스토리보드에서 reference를 따서 각 각 수정하는것이 합리.
+
+- controller 내 view에서 subviews로 @IBOutlet을 가지고 있기 때문에 weak을 해줌.
+
+
+#### 포맷
+
+type: subject
+
+body
+
+footer
+
+#### type
+
+feat: a new feature
+fix: a bug fix
+docs: changes to documentation
+style: formatting, missing semi colons, etc; no code change
+refactor: refactoring production code
+test: adding tests, refactoring test; no production code change
+chore: updating build tasks, package manager configs, etc; no production code change
+
+#### 예시
+
+feat: Summarize changes in around 50 characters or less
+
+More detailed explanatory text, if necessary. Wrap it to about 72
+characters or so. In some contexts, the first line is treated as the
+subject of the commit and the rest of the text as the body. The
+blank line separating the summary from the body is critical (unless
+you omit the body entirely); various tools like `log`, `shortlog`
+and `rebase` can get confused if you run the two together.
+
+Explain the problem that this commit is solving. Focus on why you
+are making this change as opposed to how (the code explains that).
+Are there side effects or other unintuitive consequenses of this
+change? Here's the place to explain them.
+
+Further paragraphs come after blank lines.
+
+- Bullet points are okay, too
+
+- Typically a hyphen or asterisk is used for the bullet, preceded
+by a single space, with blank lines in between, but conventions
+vary here
+
+If you use an issue tracker, put references to them at the bottom,
+like this:
+
+Resolves: #123
+See also: #456, #789
