@@ -33,8 +33,14 @@ class NumberSetMatrix {
         self.init(row: row, column: column)
         
         if filled {
+            var number = 1
             for i in 0 ..< row * column {
-                self.numbers[i] = i + 1
+                if i % 2 == 0 {
+                    self.numbers[i] = number
+                } else {
+                    self.numbers[i] = number
+                    number += 1
+                }
             }
             
             let totalCount = row * column
@@ -53,8 +59,15 @@ class NumberSetMatrix {
     }
     
     func shuffle(){
+        var number = 1
         for i in 0 ..< self.numbers.count {
-            self.numbers[i] = i + 1
+            if i % 2 == 0 {
+                self.numbers[i] = number
+            } else {
+                self.numbers[i] = number
+                number += 1
+            }
+            
         }
         
         for i in 0 ..< self.numbers.count {

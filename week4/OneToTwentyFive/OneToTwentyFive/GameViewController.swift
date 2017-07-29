@@ -20,14 +20,31 @@ class GameViewController: UIViewController {
     @IBOutlet weak var historyButton: UIButton!
     
     // Number Buttons.
-    var numberButtons: [UIButton]!
+    var numberButtons: [UIButton]?
     
     // MARK: Properties.
     
     // Game Property.
     private var numberMatrix: NumberSetMatrix!
     private var latestSelectedNumber: Int = 0
-    private var gameRowSize: Int = 5
+    private var currentSelectedButton: UIButton? = nil
+    var gameRowSize: Int = 4 {
+        didSet {
+            print("didSet")
+//            self.numberMatrix = NumberSetMatrix(row: self.gameRowSize, column: self.gameRowSize, randomFilled: true)
+//            
+//            if self.numberButtons == nil {
+//                self.setupNumberButtons()
+//                self.resetNumberButtons()
+//            } else {
+//                for button in self.numberButtons! {
+//                    button.removeFromSuperview()
+//                }
+//                self.setupNumberButtons()
+//                self.resetNumberButtons()
+//            }
+        }
+    }
     private var gameSize: Int {
         get {
             return self.gameRowSize * self.gameRowSize
@@ -105,19 +122,24 @@ class GameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(self.gameRowSize)
+        self.numberMatrix = NumberSetMatrix(row: self.gameRowSize, column: self.gameRowSize, randomFilled: true)
+        
+        self.setupNumberButtons()
+        self.historyButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .disabled)
         
         self.records = GameManager.shared.records
         
         self.gameTimeLabel.font = self.gameTimeLabel.font.withSize(UIFont.preferredFont(forTextStyle: .title1).pointSize)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.numberMatrix = NumberSetMatrix(row: self.gameRowSize, column: self.gameRowSize, randomFilled: true)
-        
-        self.setupNumberButtons()
-        self.historyButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .disabled)
+    }
+    
+    func numberButtonDidTouchUp(sender: UIButton){
+        self.currentSelectedButton = nil
     }
     
     private func setupNumberButtons(){
@@ -130,8 +152,10 @@ class GameViewController: UIViewController {
             newButton.setTitleColor(UIColor.white, for: .normal)
             newButton.tag = self.numberMatrix[i]
             newButton.addTarget(self, action: #selector(self.numberButtonDidTouchUpInside(sender:)), for: .touchDown)
+            newButton.addTarget(self, action: #selector(self.numberButtonDidTouchUp(sender:)), for: .touchUpInside)
+            newButton.addTarget(self, action: #selector(self.numberButtonDidTouchUp(sender:)), for: .touchUpOutside)
             newButton.translatesAutoresizingMaskIntoConstraints = false
-            numberButtons.append(newButton)
+            numberButtons?.append(newButton)
         }
         
         let verticalStackView = UIStackView()
@@ -139,7 +163,7 @@ class GameViewController: UIViewController {
             let horizontalStackView = UIStackView()
             for j in 0 ..< self.gameRowSize {
                 let buttonIndex = (i * self.gameRowSize) + j
-                horizontalStackView.addArrangedSubview(numberButtons[buttonIndex])
+                horizontalStackView.addArrangedSubview((numberButtons?[buttonIndex])!)
             }
             horizontalStackView.axis = .horizontal
             horizontalStackView.spacing = 8
@@ -166,10 +190,8 @@ class GameViewController: UIViewController {
         verticalStackView.bottomAnchor.constraint(equalTo: self.numberButtonContainerView.bottomAnchor).isActive = true
     }
     
-<<<<<<< HEAD
-=======
     /* History 화면에서 최고 기록을 제거해도 되돌아 왔을때 최고기록이 변경되어 있지 않군요! 어떻게 하면 좋을까요? */
->>>>>>> 998ea8f9a5e7c8a9bef1dedc470e74e6c1a51096
+
     private func updateBestRecord(){
         if self.bestRecord == nil {
             self.bestRecord = Record(name: "No Record", clearTime: "59:59:99", clearDate: Date())
@@ -193,8 +215,7 @@ class GameViewController: UIViewController {
     // MARK: Game Control.
     
     private func resetNumberButtons(){
-//        self.numberButtons.forEach { $0.alpha = 1; $0.isUserInteractionEnabled = true }
-        for (index, button) in self.numberButtons.enumerated() {
+        for (index, button) in (self.numberButtons?.enumerated())! {
             button.alpha = 1
             button.isUserInteractionEnabled = true
             button.tag = numberMatrix[index]
@@ -203,6 +224,33 @@ class GameViewController: UIViewController {
     }
     
     @objc private func numberButtonDidTouchUpInside(sender: UIButton) {
+        
+        if self.currentSelectedButton == nil {
+            self.currentSelectedButton = sender
+        } else {
+            if self.currentSelectedButton!.tag == sender.tag {
+                if sender.tag == self.latestSelectedNumber + 1 {
+                    self.latestSelectedNumber = sender.tag
+                    
+                    sender.alpha = 0
+                    sender.isUserInteractionEnabled = false
+                    
+                    self.currentSelectedButton?.alpha = 0
+                    self.currentSelectedButton?.isUserInteractionEnabled = false
+                } else {
+                    guard self.startTime != nil else { return }
+                    self.startTime = self.startTime!.addingTimeInterval(-1.5)
+                }
+            }
+            
+            if self.latestSelectedNumber == self.numberMatrix.count / 2 {
+                self.gameDidEnded()
+            }
+        }
+        print("down")
+        
+        
+        /*
         if sender.tag == self.latestSelectedNumber + 1 {
             self.latestSelectedNumber = sender.tag
             
@@ -216,6 +264,7 @@ class GameViewController: UIViewController {
         if self.latestSelectedNumber == self.numberMatrix.count {
             self.gameDidEnded()
         }
+         */
     }
 
     func gameDidEnded(){

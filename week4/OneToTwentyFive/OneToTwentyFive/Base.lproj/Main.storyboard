@@ -36,7 +36,6 @@
                                         </state>
                                         <connections>
                                             <action selector="startButtonDidTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tgq-Rg-hHF"/>
-                                            <segue destination="F2P-ib-3Td" kind="show" customClass="SwipeSegue" customModule="OneToTwentyFive" customModuleProvider="target" id="3dm-eO-P89"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-Af-OZe">
@@ -61,6 +60,14 @@
                                 <color key="textColor" red="0.98802495000000001" green="0.3218480051" blue="0.34656584260000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJU-nv-EIH">
+                                <rect key="frame" x="16" y="453" width="343" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ixh-HG-u4A"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="hHB-Zu-QlL"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -74,6 +81,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gameSizePickerView" destination="KJU-nv-EIH" id="0S0-jq-z8E"/>
                         <outlet property="titleLabel" destination="Sei-k0-rKK" id="lLV-V1-ctj"/>
                     </connections>
                 </viewController>
