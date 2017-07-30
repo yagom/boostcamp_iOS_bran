@@ -1,3 +1,17 @@
+5 주차
+
+### 질문
+
+#### URLSession
+
+    dataTask에서 completion블락은 main Thread가 아닙니다.
+
+#### UnitTest
+
+- 테스트하고자 하는 메서드 정의시 이름은 test로 시작해야한다.
+
+- thread적으로 돌아갈 때는 XCTAssert가 제대로 nil을 판단 못하게 되는데 while true같은 걸로 트릭써야함.
+
 # 4주차
 
 ### 질문
@@ -73,3 +87,21 @@ TimeInterval로 프로퍼티를 줄 때, Double로 프로퍼티를 줄 때 decod
 - view에서 endEditing(_:) 호출은 계층 구조의 어느 텍스트 필드가 퍼스트 리스폰더인지 확인 후 그 뷰.resignFirstResponder() 함.
 
 - 확실한 Reference Type의 이점이 필요할 때 빼고는 구조체를 활요하자.
+
+### 코드 배우기
+
+#### Animation
+
+- 애니메이션 효과를 주고 다른 화면으로 이동하면 애니메이션을 중지하는 것이 좋음. (view.layer.removeAllAnimations())
+
+- 또한 해당 view의 transform으로 변형하였다면 초기값으로 설정해주자.
+
+- dateFormatter나 numberFormatter 또는 View들을 초기화 값을 주면서 프로퍼티 할당하게 해주는 클로저 활용.
+
+- Data Model에서 all.을 통해 접근. all은 해당 클래스에서 unarchive해서 주는 방향.
+
+- 실질적인 데이터와 get only용 외부접근용 all을 따로 설정. allRecord는 Notification센터 Post 변화 알림.
+
+- CodingKey, RecordPropertyName 같은 구조체가 해당 클래스내에서만 쓰인다면 nested struct으로 구현하시오~
+
+- 아카이브를 할때 archiveer.archiveRootData로 바로 할 수 있지만 ,archivedData를 호출 하여 data를 .write하면 try Catch 로 감쌀 수 있다.
