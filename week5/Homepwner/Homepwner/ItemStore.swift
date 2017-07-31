@@ -9,8 +9,9 @@
 import Foundation
 
 class ItemStore {
+    
     open var allItems = [Item]()
-    let itemArchiveURL: URL? = {
+    private let itemArchiveURL: URL? = {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentDirectory = documentsDirectories.first else { return nil }
         return documentDirectory.appendingPathComponent("items.archive")
@@ -25,13 +26,13 @@ class ItemStore {
         return newItem
     }
     
-    internal func removeItem(item: Item) {
+    func removeItem(item: Item) {
         if let index = self.allItems.index(of: item) {
             self.allItems.remove(at: index)
         }
     }
     
-    internal func moveItem(at fromIndex: Int, to toIndex: Int) {
+    func moveItem(at fromIndex: Int, to toIndex: Int) {
         guard fromIndex != toIndex else { return }
         
         let moveItem = self.allItems[fromIndex]

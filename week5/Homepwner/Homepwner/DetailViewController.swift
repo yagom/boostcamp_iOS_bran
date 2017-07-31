@@ -95,8 +95,6 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
         return textField.resignFirstResponder()
     }
 }
@@ -106,6 +104,7 @@ extension DetailViewController: UINavigationControllerDelegate, UIImagePickerCon
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         imageView.image = image
         self.imageStore.setImage(image, forKey: item.itemKey)
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

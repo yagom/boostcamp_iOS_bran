@@ -12,7 +12,7 @@ class ImageStore {
     
     private let cache = NSCache<NSString, UIImage>()
     
-    func imageURL(forKey key: String) -> URL? {
+    private func imageURL(forKey key: String) -> URL? {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentDirectory = documentsDirectories.first else { return nil }
         
@@ -61,7 +61,9 @@ class ImageStore {
         else {
             return nil
         }
+        
         cache.setObject(imageFromDisk, forKey: key as NSString)
+        
         return imageFromDisk
     }
     
@@ -69,11 +71,11 @@ class ImageStore {
         self.cache.removeObject(forKey: key as NSString)
         
         guard let imageURL = imageURL(forKey: key) else { return }
+        
         do {
             try FileManager.default.removeItem(at: imageURL)
         } catch let deleteError {
             print("Error removing the image from disk: \(deleteError)")
         }
-        
     }
 }
