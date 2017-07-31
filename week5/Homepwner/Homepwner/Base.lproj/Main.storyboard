@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Llq-MT-pZb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Llq-MT-pZb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -158,20 +158,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="znY-iu-mBR">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="znY-iu-mBR">
+                                <rect key="frame" x="16" y="72" width="343" height="551"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-0f-nrw">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hID-Q2-J1C">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lvz-RW-sMQ" customClass="MyTextField" customModule="Homepwner" customModuleProvider="target">
-                                                <rect key="frame" x="53" y="0.0" width="290" height="30"/>
+                                                <rect key="frame" x="53" y="0.0" width="290" height="20.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -182,16 +182,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-Zx-7j3">
-                                        <rect key="frame" x="0.0" y="30" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="343" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81k-F2-121">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-s7-hTf" customClass="MyTextField" customModule="Homepwner" customModuleProvider="target">
-                                                <rect key="frame" x="53" y="0.0" width="290" height="30"/>
+                                                <rect key="frame" x="53" y="0.0" width="290" height="20.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -199,50 +199,72 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="esV-Ld-axP">
-                                        <rect key="frame" x="0.0" y="60" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="57" width="343" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kd-wI-N36">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tbp-gw-14A" customClass="MyTextField" customModule="Homepwner" customModuleProvider="target">
-                                                <rect key="frame" x="53" y="0.0" width="290" height="30"/>
+                                                <rect key="frame" x="53" y="0.0" width="290" height="20.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-Eh-2B2">
-                                        <rect key="frame" x="0.0" y="90" width="343" height="477"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-Eh-2B2">
+                                        <rect key="frame" x="0.0" y="85.5" width="343" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9n-2t-mkV">
-                                        <rect key="frame" x="0.0" y="567" width="343" height="36"/>
+                                        <rect key="frame" x="0.0" y="93.5" width="343" height="32.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Chnage Date"/>
                                         <connections>
                                             <segue destination="QNh-Zb-4I8" kind="show" identifier="ChangeDate" id="mpd-5x-rJi"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-Bf-UDT">
+                                        <rect key="frame" x="0.0" y="134" width="343" height="417"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Tbp-gw-14A" firstAttribute="leading" secondItem="Lvz-RW-sMQ" secondAttribute="leading" id="Ses-vp-8Fn"/>
                                     <constraint firstItem="HH9-s7-hTf" firstAttribute="leading" secondItem="Lvz-RW-sMQ" secondAttribute="leading" id="dGG-rz-Kdj"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbO-Ct-6Ek">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="ppR-Qn-hUL">
+                                        <connections>
+                                            <action selector="takePictureButtonTap:" destination="u4r-Qz-XwR" id="0v7-ka-YzZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yfR-4F-2ce"/>
+                                    <barButtonItem title="ImageReset" id="Y0W-Q9-vSy">
+                                        <connections>
+                                            <action selector="resetPictureButtonTap:" destination="u4r-Qz-XwR" id="5h7-B7-L2l"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="znY-iu-mBR" firstAttribute="topMargin" secondItem="0cr-GB-Zdn" secondAttribute="bottom" id="40k-SK-Uyc"/>
-                            <constraint firstItem="EFL-QU-bdI" firstAttribute="top" secondItem="znY-iu-mBR" secondAttribute="bottomMargin" id="i6M-kh-eeT"/>
+                            <constraint firstItem="znY-iu-mBR" firstAttribute="topMargin" secondItem="0cr-GB-Zdn" secondAttribute="bottom" constant="8" id="40k-SK-Uyc"/>
+                            <constraint firstItem="IbO-Ct-6Ek" firstAttribute="top" secondItem="znY-iu-mBR" secondAttribute="bottom" id="NqA-Dg-Ci1"/>
                             <constraint firstItem="znY-iu-mBR" firstAttribute="leadingMargin" secondItem="tqv-gp-8ot" secondAttribute="leadingMargin" id="k43-bN-5LG"/>
+                            <constraint firstAttribute="bottom" secondItem="IbO-Ct-6Ek" secondAttribute="bottom" id="lHO-9R-TbJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="znY-iu-mBR" secondAttribute="trailingMargin" id="vt3-qt-iY2"/>
+                            <constraint firstItem="IbO-Ct-6Ek" firstAttribute="leading" secondItem="tqv-gp-8ot" secondAttribute="leading" id="xc5-E1-Qbb"/>
+                            <constraint firstAttribute="trailing" secondItem="IbO-Ct-6Ek" secondAttribute="trailing" id="zZq-de-UzZ"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QZL-3T-Nn3" appends="YES" id="Gw4-Td-ot0"/>
@@ -250,6 +272,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="cSr-Eh-2B2" id="QKH-TZ-6Rw"/>
+                        <outlet property="imageView" destination="Pov-Bf-UDT" id="zAW-Zn-MZQ"/>
                         <outlet property="nameField" destination="Lvz-RW-sMQ" id="vFm-nr-1El"/>
                         <outlet property="serialNumberField" destination="HH9-s7-hTf" id="i0x-jT-PmE"/>
                         <outlet property="valueField" destination="Tbp-gw-14A" id="ced-1M-mSl"/>
@@ -262,7 +285,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2783" y="59"/>
+            <point key="canvasLocation" x="2781.5999999999999" y="58.920539730134934"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="Og9-wL-9nE">

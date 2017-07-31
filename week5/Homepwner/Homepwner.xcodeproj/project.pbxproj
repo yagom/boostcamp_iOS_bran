@@ -10,6 +10,7 @@
 		A52CD8F51F26FF00005F9A21 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8F41F26FF00005F9A21 /* DetailViewController.swift */; };
 		A52CD8F71F270F32005F9A21 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8F61F270F32005F9A21 /* MyTextField.swift */; };
 		A52CD8F91F27101C005F9A21 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CD8F81F27101C005F9A21 /* DatePickerViewController.swift */; };
+		A57297E81F2EF72400586ACD /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57297E71F2EF72400586ACD /* ImageStore.swift */; };
 		A5B5501E1F18845E008D8DD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B5501D1F18845E008D8DD3 /* AppDelegate.swift */; };
 		A5B550231F18845E008D8DD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B550211F18845E008D8DD3 /* Main.storyboard */; };
 		A5B550251F18845E008D8DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B550241F18845E008D8DD3 /* Assets.xcassets */; };
@@ -24,6 +25,8 @@
 		A52CD8F41F26FF00005F9A21 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A52CD8F61F270F32005F9A21 /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 		A52CD8F81F27101C005F9A21 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		A57297E71F2EF72400586ACD /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		A57297EB1F2F0BE900586ACD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5B5501A1F18845E008D8DD3 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B5501D1F18845E008D8DD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B550221F18845E008D8DD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,11 +50,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A57297EA1F2F0BE900586ACD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A57297EB1F2F0BE900586ACD /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A5B550111F18845E008D8DD3 = {
 			isa = PBXGroup;
 			children = (
 				A5B5501C1F18845E008D8DD3 /* Homepwner */,
 				A5B5501B1F18845E008D8DD3 /* Products */,
+				A57297EA1F2F0BE900586ACD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +86,7 @@
 				A5B550351F18B9E1008D8DD3 /* ItemCell.swift */,
 				A5B550311F188615008D8DD3 /* Item.swift */,
 				A5B550331F188981008D8DD3 /* ItemStore.swift */,
+				A57297E71F2EF72400586ACD /* ImageStore.swift */,
 				A5B550211F18845E008D8DD3 /* Main.storyboard */,
 				A5B550241F18845E008D8DD3 /* Assets.xcassets */,
 				A5B550261F18845E008D8DD3 /* LaunchScreen.storyboard */,
@@ -160,6 +173,7 @@
 				A5B550321F188615008D8DD3 /* Item.swift in Sources */,
 				A5B550341F188981008D8DD3 /* ItemStore.swift in Sources */,
 				A52CD8F91F27101C005F9A21 /* DatePickerViewController.swift in Sources */,
+				A57297E81F2EF72400586ACD /* ImageStore.swift in Sources */,
 				A52CD8F51F26FF00005F9A21 /* DetailViewController.swift in Sources */,
 				A5B550301F1885E3008D8DD3 /* ItemsViewController.swift in Sources */,
 				A5B550361F18B9E1008D8DD3 /* ItemCell.swift in Sources */,

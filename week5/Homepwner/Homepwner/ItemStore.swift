@@ -10,6 +10,11 @@ import Foundation
 
 class ItemStore {
     open var allItems = [Item]()
+    let itemArchiveURL: URL? = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        guard let documentDirectory = documentsDirectories.first else { return nil }
+        return documentDirectory.appendingPathComponent("items.archive")
+    }()
     
     /* internal은 기본 접근 지정자이므로 굳이 필요한 경우가 아니면 명시하지 않아도 됩니다 */
     @discardableResult internal func createItem() -> Item {
@@ -36,10 +41,16 @@ class ItemStore {
         self.allItems.insert(moveItem, at: toIndex)
     }
     
-    
     init() {
-        for _ in 0 ..< 5 {
-            _ = self.createItem()
+        guard let filePath = self.itemArchiveURL?.path else { return }
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [Item] {
+            allItems += archivedItems
         }
+    }
+    
+    func saveChanges() -> Bool {
+        guard let filePath = self.itemArchiveURL?.path else { return false }
+        print("Saving items to: \(filePath)/")
+        return NSKeyedArchiver.archiveRootObject(allItems, toFile: filePath)
     }
 }
