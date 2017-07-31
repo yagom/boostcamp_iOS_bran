@@ -10,34 +10,66 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
-    var store: PhotoStore!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    var store: PhotoStore!
+    let photoDataSource = PhotoDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView.dataSource = self.photoDataSource
+        self.collectionView.delegate = self
+        
         store.fetchRecentPhotos { (photosResult) in
-            switch photosResult {
-            case let .success(photos):
-                print("Successfully found \(photos.count) recent photos.")
-                
-                if let firstPhoto = photos.first {
-                    self.store.fetchImage(for: firstPhoto, completion: { (imageResult) in
-                        
-                        switch imageResult {
-                        case let .success(image):
-                            OperationQueue.main.addOperation {
-                                self.imageView.image = image
-                            }
-                        case let .failure(error):
-                            print("Error downloading image: \(error)")
-                        }
-                    })
+            OperationQueue.main.addOperation {
+                switch photosResult {
+                case let .success(photos):
+                    print("Successfully found \(photos.count) recent photos.")
+                    self.photoDataSource.photos = photos
+                case let .failure(error):
+                    self.photoDataSource.photos.removeAll()
+                    print("Error fetching recent photos: \(error)")
                 }
+                self.collectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
+    }
+}
+
+extension PhotosViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let photo = photoDataSource.photos[indexPath.row]
+        
+        self.store.fetchImage(for: photo) { (result) in
+            OperationQueue.main.addOperation {
                 
-            case let .failure(error):
-                print("Error fetching recent photos: \(error)")
+                if let photoIndex = self.photoDataSource.photos.index(where: { $0 == photo }) {
+                    let photoIndexPath = IndexPath(item: photoIndex, section: 0)
+                    
+                    if let cell = self.collectionView.cellForItem(at: photoIndexPath) as? PhotoCollectionViewCell {
+                        cell.update(with: photo.image)
+                    }
+                } else {
+                    
+                }
+            }
+        }
+    }
+}
+
+extension PhotosViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowPhoto" {
+            if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
+                let photo = photoDataSource.photos[selectedIndexPath.row]
+                
+                if let destinationViewController = segue.destination as? PhotoInfoViewController {
+                    destinationViewController.photo = photo
+                    destinationViewController.store = store
+                }
             }
         }
     }
