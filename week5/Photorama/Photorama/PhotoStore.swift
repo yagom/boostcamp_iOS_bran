@@ -24,12 +24,24 @@ class PhotoStore {
         return URLSession(configuration: configuration)
     }()
     
+    // 동메달 과제: 응답 정보 출력하기
+    func logResponse(response: URLResponse?) {
+        if let httpResponse = response as? HTTPURLResponse {
+            print(httpResponse.statusCode)
+            for headerField in httpResponse.allHeaderFields {
+                print("\(headerField.key) : \(headerField.value)")
+            }
+        }
+    }
+    
     // Fetch From Server
     func fetchRecentPhotos(completion completion: @escaping (PhotosResult) -> Void) {
         let url = FlickrAPI.recentPhotosURL()
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {
             [unowned self] (data, response, error) -> Void in
+            
+            self.logResponse(response: response)
 
             let result = self.processRecentPhotosRequest(data: data, error: error)
             completion(result)
@@ -44,8 +56,9 @@ class PhotoStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             
-            let result = self.processImageRequest(data: data, error: error)
+            self.logResponse(response: response)
             
+            let result = self.processImageRequest(data: data, error: error)
             if case let .success(image) = result {
                 photo.image = image
             }
