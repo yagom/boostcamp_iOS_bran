@@ -6,7 +6,14 @@
 //  Copyright © 2017년 YJH Studio. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension NSMutableData {
+    func appendString(_ string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        append(data!)
+    }
+}
 
 enum UserResult {
     case success(User)
@@ -69,7 +76,7 @@ class BoostCampAPI {
         }
         
         let task = session.dataTask(with: url) { (data, response, error) in
-            self.logResponse(response: response)
+            self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
                 let jsonArticles = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [[String: Any]],
@@ -117,7 +124,7 @@ class BoostCampAPI {
         request.addValue(RequestHeader.Value.json, forHTTPHeaderField: RequestHeader.Field.contentType)
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            self.logResponse(response: response)
+            self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
                 let userJson = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any],
@@ -155,7 +162,7 @@ class BoostCampAPI {
         request.addValue(RequestHeader.Value.json, forHTTPHeaderField: RequestHeader.Field.contentType)
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            self.logResponse(response: response)
+            self.logResponse(data: data, response: response, error: error)
             
             if let urlResponse = response as? HTTPURLResponse {
                 
@@ -182,39 +189,46 @@ class BoostCampAPI {
     // if requesting server and creating article object fail, completion argument is nil.
     func postArticle(with article: Article, comopletionBlock completion: @escaping (_ articleResult: ArticleResult) -> ()) {
         
-        guard let imageData = article.imageData else { return }
         let session = URLSession.shared
         
-        var jsonBody = [String: Any]()
-        jsonBody[Article.jsonKey.imageTitle] = article.imageTitle
-        jsonBody[Article.jsonKey.imageDescription] = article.imageDescription
-        jsonBody[Article.jsonKey.imageData] = imageData.base64EncodedString()
-        
-        guard let body = try? JSONSerialization.data(withJSONObject: jsonBody, options: .prettyPrinted),
-            let url = URL(string: urlPath.image)
-            else {
-                print("1fail")
-                return completion(.failure(.articleJSONSerializationFail))
+        guard let image = article.image,
+            let imageData = UIImageJPEGRepresentation(image, 0.5)
+        else {
+            return
         }
+
+//        var jsonBody = [String: String]()
+//        jsonBody[Article.jsonKey.imageTitle] = article.imageTitle
+//        jsonBody[Article.jsonKey.imageDescription] = article.imageDescription
         
+        var parameters = [
+            Article.jsonKey.imageTitle: article.imageTitle,
+            Article.jsonKey.imageDescription: article.imageDescription
+        ]
+
+        guard let url = URL(string: urlPath.image) else { return }
+
         var request = URLRequest(url: url)
+        let boundary = "Boundary-\(UUID().uuidString)"
         request.httpMethod = RequestMethod.post
-        request.httpBody = body
-        request.addValue(RequestHeader.Value.json, forHTTPHeaderField: RequestHeader.Field.contentType)
+        request.addValue("multipart/form-data; boundary=\(boundary)\r\n", forHTTPHeaderField: RequestHeader.Field.contentType)
+        request.httpBody = createBody(parameters: parameters,
+                              boundary: boundary,
+                              data: imageData,
+                              mimeType: "image/jpeg",
+                              filename: "article.jpg")
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            self.logResponse(response: response)
+            self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
-                let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any],
+                let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
                 let article = articleJSON
             else {
-                print("2fail2")
                 return completion(.failure(.articleJSONSerializationFail))
             }
             
             guard let resultArticle = Article(jsonData: article) else { return completion(.failure(.articleInitializationFail)) }
-            print("3fail")
             completion(.success([resultArticle]))
         }
         task.resume()
@@ -224,10 +238,16 @@ class BoostCampAPI {
     func updateArticle(with article: Article, comopletionBlock completion: @escaping (_ articleResult: ArticleResult) -> ()) {
         let session = URLSession.shared
         
+        guard let image = article.image,
+            let imageData = UIImageJPEGRepresentation(image, 0.5)
+        else {
+            return
+        }
+        
         var jsonBody = [String: Any]()
         jsonBody[Article.jsonKey.imageTitle] = article.imageTitle
         jsonBody[Article.jsonKey.imageDescription] = article.imageDescription
-        jsonBody[Article.jsonKey.imageData] = article.imageData
+        jsonBody[Article.jsonKey.imageData] = imageData
         
         guard let body = try? JSONSerialization.data(withJSONObject: jsonBody, options: .prettyPrinted),
             let url = URL(string: urlPath.image.appending("/\(article.id)"))
@@ -238,10 +258,10 @@ class BoostCampAPI {
         var request = URLRequest(url: url)
         request.httpMethod = RequestMethod.post
         request.httpBody = body
-        request.addValue(RequestHeader.Value.json, forHTTPHeaderField: RequestHeader.Field.contentType)
+        request.addValue(RequestHeader.Value.formData, forHTTPHeaderField: RequestHeader.Field.contentType)
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            self.logResponse(response: response)
+            self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
                 let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any],
@@ -265,7 +285,7 @@ class BoostCampAPI {
         request.httpMethod = RequestMethod.delete
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            self.logResponse(response: response)
+            self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
                 let jsonArticles = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String: Any]],
@@ -281,9 +301,40 @@ class BoostCampAPI {
     }
     
     // Print Log.
-    private func logResponse(response: URLResponse?) {
-        if let httpResponse = response as? HTTPURLResponse {
+    private func logResponse(data: Data?, response: URLResponse?, error: Error?) {
+        if let httpResponse = response as? HTTPURLResponse,
+            let jsonData = data,
+        let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+        {
             print("response status : \(httpResponse.statusCode)")
+            print("error : \(error?.localizedDescription)")
+            print("data : \(jsonObject)")
         }
+    }
+    
+    // Helper
+    private func createBody(parameters: [String: String],
+                            boundary: String,
+                            data: Data,
+                            mimeType: String,
+                            filename: String) -> Data {
+        let body = NSMutableData()
+        
+        let boundaryPrefix = "--\(boundary)\r\n"
+        
+        for (key, value) in parameters {
+            body.appendString(boundaryPrefix)
+            body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+            body.appendString("\(value)\r\n")
+        }
+        
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(data)
+        body.appendString("\r\n")
+        body.appendString("--".appending(boundary.appending("--")))
+        
+        return body as Data
     }
 }
