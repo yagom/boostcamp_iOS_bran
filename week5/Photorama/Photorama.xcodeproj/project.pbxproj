@@ -19,6 +19,7 @@
 		A57298161F2F577F00586ACD /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298151F2F577F00586ACD /* PhotoCollectionViewCell.swift */; };
 		A57298181F2F5D2000586ACD /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298171F2F5D2000586ACD /* PhotoInfoViewController.swift */; };
 		A572981A1F2F5F9E00586ACD /* PhotoCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298191F2F5F9E00586ACD /* PhotoCollectionViewLayout.swift */; };
+		A572981E1F2FA76800586ACD /* FlipbookLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A572981D1F2FA76800586ACD /* FlipbookLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A57298151F2F577F00586ACD /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A57298171F2F5D2000586ACD /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
 		A57298191F2F5F9E00586ACD /* PhotoCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewLayout.swift; sourceTree = "<group>"; };
+		A572981D1F2FA76800586ACD /* FlipbookLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipbookLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				A57297F91F2F255400586ACD /* AppDelegate.swift */,
 				A572980B1F2F25D500586ACD /* PhotosViewController.swift */,
 				A57298191F2F5F9E00586ACD /* PhotoCollectionViewLayout.swift */,
+				A572981D1F2FA76800586ACD /* FlipbookLayout.swift */,
 				A57298151F2F577F00586ACD /* PhotoCollectionViewCell.swift */,
 				A57298131F2F55C500586ACD /* PhotoDataSource.swift */,
 				A57298171F2F5D2000586ACD /* PhotoInfoViewController.swift */,
@@ -165,6 +168,7 @@
 				A57298141F2F55C500586ACD /* PhotoDataSource.swift in Sources */,
 				A57298161F2F577F00586ACD /* PhotoCollectionViewCell.swift in Sources */,
 				A57298181F2F5D2000586ACD /* PhotoInfoViewController.swift in Sources */,
+				A572981E1F2FA76800586ACD /* FlipbookLayout.swift in Sources */,
 				A57297FA1F2F255400586ACD /* AppDelegate.swift in Sources */,
 				A57298121F2F427E00586ACD /* Photo.swift in Sources */,
 			);

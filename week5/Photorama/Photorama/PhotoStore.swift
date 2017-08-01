@@ -41,7 +41,7 @@ class PhotoStore {
         let task = session.dataTask(with: request) {
             [unowned self] (data, response, error) -> Void in
             
-//            self.logResponse(response: response)
+            self.logResponse(response: response)
 
             let result = self.processRecentPhotosRequest(data: data, error: error)
             completion(result)
@@ -62,7 +62,7 @@ class PhotoStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             
-//            self.logResponse(response: response)
+            self.logResponse(response: response)
             
             let result = self.processImageRequest(data: data, error: error)
             if case let .success(image) = result {

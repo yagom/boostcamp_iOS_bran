@@ -16,6 +16,9 @@ class PhotoCollectionViewLayout: UICollectionViewFlowLayout {
         guard let collectionViewFrame = self.collectionView?.frame else { return }
         let smallLength = min(collectionViewFrame.width, collectionViewFrame.height)
         self.itemSize = CGSize(width: smallLength, height: smallLength)
+        self.collectionView?.isPagingEnabled = true
+        self.scrollDirection = .horizontal
     }
+    
     
 }

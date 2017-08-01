@@ -50,6 +50,18 @@ extension PhotosViewController: UICollectionViewDelegate {
                     
                     if let cell = self.collectionView.cellForItem(at: photoIndexPath) as? PhotoCollectionViewCell {
                         cell.update(with: photo.image)
+                        
+                        var perspective = CATransform3DIdentity
+                        perspective.m34 = -1 / cell.frame.width
+                        
+//                        cell.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+                        cell.layer.transform = CATransform3DRotate(perspective, -CGFloat.pi / 2, 0, 1, 0)
+                        
+                        UIView.animate(withDuration: 2, animations: { 
+                            cell.layer.transform = CATransform3DIdentity
+                        })
+                        
+                        
                     }
                 } else {
                     
@@ -57,6 +69,7 @@ extension PhotosViewController: UICollectionViewDelegate {
             }
         }
     }
+
 }
 
 extension PhotosViewController {
