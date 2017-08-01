@@ -2,9 +2,29 @@
 
 ### 질문
 
+#### NotificationCenter
+
+- NotificationCenter를 통해 object를 전달받으려면 NSObject를 준수해야합니다.
+
 #### URLSession
 
-    dataTask에서 completion블락은 main Thread가 아닙니다.
+- DataTask는 서버로부터 데이터를 가져와서 메모리에 Data로 반환
+
+- DownloadTask는 서버로부터 데이터를 가져와서 파일시스템에 파일로 저장
+
+- UploadTask는 서버로 데이터를 보낸다.
+
+#### URLSession
+
+- dataTask에서 completion블락은 main Thread가 아닙니다.
+
+- 따라서 session.dataTask completion Block안에서 UI 변경작업을 원할 경우 main Queue로 호출해줘야합니다.
+
+- session.downloadTask를 호출할 때 completion 클로저를 전달할 경우 delegate의 메서드들은 호출되지 않음.
+
+#### NSCache
+
+- NSCache는 Dictionary와 같은 모습을 띄지만 메모리가 부족해지면 스스로 비운다.
 
 #### UnitTest
 
@@ -16,11 +36,16 @@
 
 ### 질문
 
-TimeInterval로 프로퍼티를 줄 때, Double로 프로퍼티를 줄 때 decode가 안되는 듯.
+Q. TimeInterval로 프로퍼티를 줄 때, Double로 프로퍼티를 줄 때 decode가 안되는 듯.
+A. 됨.
 
-교재 13장에서 IBOutlet을 strong으로 주는데 특별한 이유가 있는지.
+Q. 교재 13장에서 IBOutlet을 strong으로 주는데 특별한 이유가 있는지. 
 기존에 IB에서 만든 subView들은 superView를 가지고 있으므로 weak으로 해주는 것으로 알고 있었음.
 사라졌다가 다시 만들 필요가 있을 때 strong으로 알고 있어도 되는지.
+A. Controller안에 존재하는 view (보통 Controller내 self.view)에 추가를 하게 되는데
+IB에서 생성되는 경우에는 불려왓을땐 view에 이미 추가된 상태이고 그 view는 subview들을 strong하게 잡고 있다.
+따라서 Controller에서 한번더 잡을 필요가 없다고 생각하면 weak, 있으면 strong
+여기서 self.view는 Controller가 잡고 있으므로 Controller가 해지되는 시점에는 view와 subview들이 모두 해지된다.
 
 ### 생각해보기
 
