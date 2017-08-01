@@ -10,50 +10,70 @@ import UIKit
 
 class ArticleCollectionViewController: UICollectionViewController {
     
-    var articles: [Article]?
+    // Properties
+    var user: User?
+    var isDownloading = false
     
+    // IBActions
+    @IBAction func filterBarButtonDidTap(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "정렬", message: nil, preferredStyle: .actionSheet)
+        let myAction = UIAlertAction(title: "내 게시물만 보기", style: .default) {
+            [unowned self] (action) in
+            ArticleDataStore.shared.setFilterType(to: .me)
+            self.collectionView?.reloadData()
+        }
+        let allAction = UIAlertAction(title: "전체 게시물 보기", style: .default) {
+            [unowned self] (action) in
+            ArticleDataStore.shared.setFilterType(to: .all)
+            self.collectionView?.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(myAction)
+        alertController.addAction(allAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // Notification Selector
+    @objc func didUserSignIn(sender: NSNotification){
+        guard let user = sender.object as? User else { return }
+        self.user = user
+    }
+    
+    // ViewController Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BoostCampAPI.shared.allBoard { (articles) in
-            self.articles = articles
-            
-            DispatchQueue.main.async {
-                self.collectionView!.reloadData()
-            }
-        }
-    }
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let articles = self.articles {
-            return articles.count
-        } else {
-            return 0
-        }
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        self.collectionView?.refreshControl = UIRefreshControl()
         
-        guard let article = self.articles?[indexPath.row] else {
-            let cell = ArticleCollectionViewCell()
-            cell.backgroundColor = UIColor.red
-            return cell
-        }
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as? ArticleCollectionViewCell {
-            cell.articleImageView.image = #imageLiteral(resourceName: "no_image")
-            cell.imageTitleLabel.text = article.imageTitle
-            cell.authorNicknameLabel.text = article.authorNickname
-            cell.createdAtLabel.text = article.createdAt.description
-            return cell
-        } else {
-            let cell = ArticleCollectionViewCell()
-            cell.backgroundColor = UIColor.red
-            return cell
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didUserSignIn(sender:)), name: UserSignInSuccess, object: nil)
+        
+        self.collectionView?.dataSource = ArticleDataStore.shared
+        
+        self.isDownloading = true
+        ArticleDataStore.shared.fetchArticles { (articleResult) in
+            switch articleResult {
+            case let .success(articles):
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+            case let .failure(error):
+                print(error)
+            }
+            self.isDownloading = false
         }
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowArticleUploadViewController" {
+            guard let articleUploadViewController = segue.destination as? ArticleUploadViewController else { return }
+            articleUploadViewController.delegate = self
+        }
+    }
+}
+
+extension ArticleCollectionViewController: ArticleUploadViewControllerDelegate {
+    func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: ArticleResult) {
+        self.collectionView?.reloadData()
+    }
 }
