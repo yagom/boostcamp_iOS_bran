@@ -6,7 +6,7 @@
 //  Copyright © 2017년 YJH Studio. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Article {
     
@@ -32,7 +32,7 @@ class Article {
     var imageDescription: String
     var imageTitle: String
     var apiVersion: String
-    var imageData: Data?
+    var image: UIImage?
     var downloadImageURL: String {
         return BoostCampAPI.urlPath.baseURL + imageURL
     }
@@ -73,9 +73,9 @@ class Article {
         self.apiVersion = apiVersion
     }
     
-    convenience init(title: String, description: String, data: Data) {
+    convenience init(title: String, description: String, image: UIImage) {
         self.init(id: "", createdAt: Date(), thumbImageURL: "", imageURL: "", authorNickname: "", author: "", imageDescription: description, imageTitle: title, apiVersion: "")
-        self.imageData = data
+        self.image = image
     }
     
     convenience init?(jsonData: [String: Any]) {

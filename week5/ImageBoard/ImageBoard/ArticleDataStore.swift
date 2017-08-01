@@ -26,7 +26,6 @@ class ArticleDataStore: NSObject {
         case .all:
             return articles
         case .me:
-            print(articles.first?.author)
             return articles.filter { $0.author == self.currentUser?.id }
         }
     }
@@ -45,19 +44,6 @@ class ArticleDataStore: NSObject {
     
     func setFilterType(to filter: ArticleFilterType) {
         self.filterType = filter
-    }
-    
-    override init() {
-        super.init()
-        
-        self.fetchArticles { (articleResult) in
-            switch articleResult {
-            case let .success(articles):
-                self.articles = articles
-            case let .failure(error):
-                print("error: \(error)")
-            }
-        }
     }
 }
 

@@ -23,13 +23,12 @@ class ArticleUploadViewController: UIViewController {
     @IBAction func doneBarButtonDidTap(_ sender: UIBarButtonItem) {
         guard let title = self.articleTitleField.text,
             let description = self.articleDescriptionTextView.text,
-            let image = self.articleImageView.image,
-            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            let image = self.articleImageView.image
         else {
             return
         }
         
-        let newArticle = Article(title: title, description: description, data: imageData)
+        let newArticle = Article(title: title, description: description, image: image)
         
         BoostCampAPI.shared.postArticle(with: newArticle) { (articleResult) in
             switch articleResult {

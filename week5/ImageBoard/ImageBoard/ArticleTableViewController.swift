@@ -116,7 +116,25 @@ class ArticleTableViewController: UITableViewController {
 }
 
 extension ArticleTableViewController: ArticleUploadViewControllerDelegate {
+    
     func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: ArticleResult) {
         self.tableView.reloadData()
+    }
+}
+
+extension ArticleTableViewController: ArticleDetailViewControllerDelegate {
+    
+    func articleDetailViewController(_: ArticleDetailViewController, didDeleteArticle article: Article) {
+        
+    }
+    
+    func articleDetailViewController(_: ArticleDetailViewController, didUpdateArticle article: Article) {
+        guard let itemIndex = ArticleDataStore.shared.articles?.index(where: { (compareArticle) -> Bool in
+            return (compareArticle.id == article.id)
+        }) else { return }
+        ArticleDataStore.shared.articles?.remove(at: itemIndex)
+        let indexPath = IndexPath(row: itemIndex, section: 0)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        
     }
 }

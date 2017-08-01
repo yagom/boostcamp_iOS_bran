@@ -64,6 +64,12 @@ class BoostCampAPI {
     }
     
     static let shared = BoostCampAPI()
+    let session: URLSession = {
+        let sessionConfiguration = URLSessionConfiguration.default
+        return URLSession.shared
+//        let session = URLSession(configuration: sessionConfiguration)
+//        return session
+    }()
     
     // MARK: All Article
     // Get all articles.
@@ -106,7 +112,7 @@ class BoostCampAPI {
     // if requesting server and creating user object fail, completion argument is nil.
     func signIn(with user: User, completionBlock completion: @escaping (_ user: UserResult) -> ()){
         
-        let session = URLSession.shared
+        
         
         var jsonBody = [String: Any]()
         jsonBody[User.jsonKey.email] = user.email
@@ -189,19 +195,13 @@ class BoostCampAPI {
     // if requesting server and creating article object fail, completion argument is nil.
     func postArticle(with article: Article, comopletionBlock completion: @escaping (_ articleResult: ArticleResult) -> ()) {
         
-        let session = URLSession.shared
-        
         guard let image = article.image,
-            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            let imageData = UIImageJPEGRepresentation(image, 0.2)
         else {
             return
         }
-
-//        var jsonBody = [String: String]()
-//        jsonBody[Article.jsonKey.imageTitle] = article.imageTitle
-//        jsonBody[Article.jsonKey.imageDescription] = article.imageDescription
         
-        var parameters = [
+        let parameters = [
             Article.jsonKey.imageTitle: article.imageTitle,
             Article.jsonKey.imageDescription: article.imageDescription
         ]
@@ -211,7 +211,8 @@ class BoostCampAPI {
         var request = URLRequest(url: url)
         let boundary = "Boundary-\(UUID().uuidString)"
         request.httpMethod = RequestMethod.post
-        request.addValue("multipart/form-data; boundary=\(boundary)\r\n", forHTTPHeaderField: RequestHeader.Field.contentType)
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: RequestHeader.Field.contentType)
+        
         request.httpBody = createBody(parameters: parameters,
                               boundary: boundary,
                               data: imageData,
@@ -222,13 +223,13 @@ class BoostCampAPI {
             self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
-                let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
-                let article = articleJSON
+                let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [[String: Any]],
+                let articles = articleJSON
             else {
                 return completion(.failure(.articleJSONSerializationFail))
             }
             
-            guard let resultArticle = Article(jsonData: article) else { return completion(.failure(.articleInitializationFail)) }
+            guard let resultArticle = Article(jsonData: articles.first!) else { return completion(.failure(.articleInitializationFail)) }
             completion(.success([resultArticle]))
         }
         task.resume()
@@ -288,8 +289,8 @@ class BoostCampAPI {
             self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
-                let jsonArticles = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String: Any]],
-                let article = jsonArticles?.first
+                let jsonArticle = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any],
+                let article = jsonArticle
                 else {
                     return completion(.failure(.articleJSONSerializationFail))
             }
@@ -318,6 +319,7 @@ class BoostCampAPI {
                             data: Data,
                             mimeType: String,
                             filename: String) -> Data {
+        
         let body = NSMutableData()
         
         let boundaryPrefix = "--\(boundary)\r\n"
@@ -329,7 +331,7 @@ class BoostCampAPI {
         }
         
         body.appendString(boundaryPrefix)
-        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"image_data\"; filename=\"\(filename)\"\r\n")
         body.appendString("Content-Type: \(mimeType)\r\n\r\n")
         body.append(data)
         body.appendString("\r\n")

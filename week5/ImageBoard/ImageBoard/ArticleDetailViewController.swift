@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ArticleDetailViewControllerDelegate {
+    func articleDetailViewController(_: ArticleDetailViewController, didDeleteArticle article: Article)
+    func articleDetailViewController(_: ArticleDetailViewController, didUpdateArticle article: Article)
+}
+
 class ArticleDetailViewController: UIViewController {
     
     @IBOutlet weak var articleImageView: BRImageView!
@@ -18,21 +23,36 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var trashBarButton: UIBarButtonItem!
     
+    var delegate: ArticleDetailViewControllerDelegate?
+    
     @IBAction func editBarButtonDidTap(_ sender: UIBarButtonItem) {
         
     }
     
     @IBAction func trashBarButtonDidTap(_ sender: UIBarButtonItem) {
         guard let articleToDelete = self.article else { return }
-        BoostCampAPI.shared.deleteArticle(with: articleToDelete) { (articleResult) in
-            switch articleResult {
-            case let .success(articles):
-                guard let articleDeleted = articles.first else { return }
-                print("delete : \(articleDeleted.imageTitle)")
-            case let .failure(error):
-                print(error)
+        
+        let alertController = UIAlertController(title: "삭제", message: "정말 삭제하시겠습니까?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "예", style: .destructive) {
+            [unowned self] (action) in
+            BoostCampAPI.shared.deleteArticle(with: articleToDelete) { (articleResult) in
+                switch articleResult {
+                case let .success(articles):
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                        guard let articleDeleted = articles.first else { return }
+                        self.delegate?.articleDetailViewController(self, didDeleteArticle: articleDeleted)
+                        print("delete : \(articleDeleted.imageTitle)")
+                    }
+                case let .failure(error):
+                    print(error)
+                }
             }
         }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     var article: Article?
@@ -56,7 +76,8 @@ class ArticleDetailViewController: UIViewController {
         if user.id == article.author {
             print("It`s me")
         } else {
-            self.navigationItem.setRightBarButton(nil, animated: false)
+            let barButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+            self.navigationItem.setRightBarButtonItems([barButtonItem], animated: true)
         }
     }
 }
