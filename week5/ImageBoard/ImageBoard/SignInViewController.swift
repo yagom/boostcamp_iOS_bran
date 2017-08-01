@@ -8,6 +8,8 @@
 
 import UIKit
 
+// UIApplicationDidReceiveMemoryWarning 처럼 시점을 써주면 좋습니다.
+// DidUserSignInSuccess
 let UserSignInSuccess: Notification.Name = Notification.Name(rawValue: "UserSignInSuccess")
 
 class SignInViewController: UIViewController {

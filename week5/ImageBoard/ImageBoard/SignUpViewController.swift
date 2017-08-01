@@ -40,6 +40,7 @@ class SignUpViewController: UIViewController {
             
             DispatchQueue.main.async {
                 
+                // switch 구문에서 enum의 모든 case를 명시했을 경우에는 default를 작성하지 않아도 됩니다. (동작할 일이 없으므로)
                 switch userResult {
                 case let .success(user):
                     self.navigationController?.popViewController(animated: true)
