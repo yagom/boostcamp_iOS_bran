@@ -23,11 +23,6 @@ class ArticleTableViewController: UITableViewController {
         }
     }
     
-    lazy var articleDetailViewController: ArticleDetailViewController? = {
-        guard let articleDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return nil }
-        return articleDetailViewController
-    }()
-    
     // Actions.
     @IBAction func filterBarButtonDidTap(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "정렬", message: nil, preferredStyle: .actionSheet)
@@ -49,17 +44,19 @@ class ArticleTableViewController: UITableViewController {
     }
     
     @objc func didUserSignIn(sender: NSNotification){
-        print("Get Noti")
-        
-        guard let user = sender.object as? User else { return }
-        print(user.id)
-        self.user = user
+        ArticleDataStore.shared.fetchArticles {
+            [unowned self] (articleResult) in
+            switch articleResult {
+            case let .success(articles):
+                self.tableView.reloadData()
+            case let .failure(error):
+                print("error: \(error)")
+            }
+        }
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        guard let refreshControl = self.refreshControl else { return }
-        if refreshControl.isRefreshing {
+    func refreshControlDidValueChange(sender: UIRefreshControl) {
+        if sender.isRefreshing {
             if self.isDownloading == false {
                 self.fetchArticlesFromBoostCampAPI()
             }
@@ -89,7 +86,9 @@ class ArticleTableViewController: UITableViewController {
         self.tableView.dataSource = ArticleDataStore.shared
         self.tableView.estimatedRowHeight = 100
         
-        self.tableView.refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshControlDidValueChange(sender:)), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
         
         let signInViewControllerNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewControllerNavigationController")
         
@@ -111,6 +110,7 @@ class ArticleTableViewController: UITableViewController {
             self.selectedArticle = ArticleDataStore.shared.visibleArticles[(self.tableView.indexPath(for: cell)?.row)!]
             guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
             articleDetailViewController.article = self.selectedArticle
+            articleDetailViewController.user = ArticleDataStore.shared.currentUser
         }
     }
 }

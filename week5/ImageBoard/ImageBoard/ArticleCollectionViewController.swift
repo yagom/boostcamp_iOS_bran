@@ -36,14 +36,32 @@ class ArticleCollectionViewController: UICollectionViewController {
     // Notification Selector
     @objc func didUserSignIn(sender: NSNotification){
         guard let user = sender.object as? User else { return }
-        self.user = user
+    }
+    
+    func refreshControlDidValueChange(sender: UIRefreshControl) {
+        if sender.isRefreshing {
+            if self.isDownloading == false {
+                ArticleDataStore.shared.fetchArticles(completion: { (articleResult) in
+                    switch articleResult {
+                    case let .success(articles):
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadData()
+                        }
+                    case let .failure(error):
+                        print(error)
+                    }
+                })
+            }
+        }
     }
     
     // ViewController Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView?.refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshControlDidValueChange(sender:)), for: .valueChanged)
+        self.collectionView?.refreshControl = refreshControl
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUserSignIn(sender:)), name: UserSignInSuccess, object: nil)
         
