@@ -10,13 +10,14 @@ import UIKit
 
 class BRImageView: UIImageView {
     
-    var downloadProgressView: UIProgressView = {
+    fileprivate var downloadProgressView: UIProgressView = {
        let progressView = UIProgressView(progressViewStyle: .bar)
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.tintColor = UIColor.red
         return progressView
     }()
-    var layoutDidSet = false
+    fileprivate var layoutDidSet = false
+    fileprivate var completionBlock: (() -> ())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,6 +54,21 @@ extension BRImageView {
         let sessionConfiguration = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfiguration, delegate: self, delegateQueue: nil)
         let task = session.downloadTask(with: url)
+        
+        self.downloadProgressView.isHidden = false
+        
+        task.resume()
+    }
+    
+    func downloadImage(path: String, completion: @escaping () -> () ) {
+        guard let url = URL(string: path) else { return }
+        self.image = #imageLiteral(resourceName: "no_image")
+        self.completionBlock = completion
+        
+        let sessionConfiguration = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfiguration, delegate: self, delegateQueue: nil)
+        let task = session.downloadTask(with: url)
+        
         self.downloadProgressView.isHidden = false
         
         task.resume()
@@ -68,6 +84,9 @@ extension BRImageView {
                 self.downloadProgressView.isHidden = true
                 self.image = UIImage(data: data)
             }
+            self.completionBlock?()
+            self.completionBlock = nil
+            
         }
     }
     

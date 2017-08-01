@@ -13,6 +13,7 @@
 		A57298201F2FAF1A00586ACD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A572981F1F2FAF1A00586ACD /* SignUpViewController.swift */; };
 		A57298241F304DC700586ACD /* ArticleUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298231F304DC700586ACD /* ArticleUploadViewController.swift */; };
 		A57298281F30740200586ACD /* ArticleDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298271F30740200586ACD /* ArticleDataStore.swift */; };
+		A572982A1F30CA3000586ACD /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298291F30CA3000586ACD /* ImageDetailViewController.swift */; };
 		A5B551211F2CB94A00A95A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B551201F2CB94A00A95A53 /* AppDelegate.swift */; };
 		A5B551231F2CB94A00A95A53 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B551221F2CB94A00A95A53 /* SignInViewController.swift */; };
 		A5B551261F2CB94A00A95A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B551241F2CB94A00A95A53 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		A572981F1F2FAF1A00586ACD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A57298231F304DC700586ACD /* ArticleUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleUploadViewController.swift; sourceTree = "<group>"; };
 		A57298271F30740200586ACD /* ArticleDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDataStore.swift; sourceTree = "<group>"; };
+		A57298291F30CA3000586ACD /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		A5B5511D1F2CB94A00A95A53 /* ImageBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B551201F2CB94A00A95A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B551221F2CB94A00A95A53 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				A57298231F304DC700586ACD /* ArticleUploadViewController.swift */,
 				A5B551491F2CD7E300A95A53 /* ArticleTableViewController.swift */,
 				A54DEEC41F2E009600471E5C /* ArticleDetailViewController.swift */,
+				A57298291F30CA3000586ACD /* ImageDetailViewController.swift */,
 				A5B5514D1F2CE41700A95A53 /* ArticleCollectionViewController.swift */,
 			);
 			name = Controller;
@@ -297,6 +300,7 @@
 				A5B5514C1F2CD93300A95A53 /* ArticleTableViewCell.swift in Sources */,
 				A57298281F30740200586ACD /* ArticleDataStore.swift in Sources */,
 				A5B551331F2CBC2100A95A53 /* BoostCampAPI.swift in Sources */,
+				A572982A1F30CA3000586ACD /* ImageDetailViewController.swift in Sources */,
 				A5B551521F2CE76F00A95A53 /* ArticleCollectionViewFlowLayout.swift in Sources */,
 				A5B5514E1F2CE41700A95A53 /* ArticleCollectionViewController.swift in Sources */,
 			);

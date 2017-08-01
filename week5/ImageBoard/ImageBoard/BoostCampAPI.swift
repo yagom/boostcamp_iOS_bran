@@ -245,33 +245,36 @@ class BoostCampAPI {
             return
         }
         
-        var jsonBody = [String: Any]()
-        jsonBody[Article.jsonKey.imageTitle] = article.imageTitle
-        jsonBody[Article.jsonKey.imageDescription] = article.imageDescription
-        jsonBody[Article.jsonKey.imageData] = imageData
+        let parameters = [
+            Article.jsonKey.imageTitle: article.imageTitle,
+            Article.jsonKey.imageDescription: article.imageDescription
+        ]
         
-        guard let body = try? JSONSerialization.data(withJSONObject: jsonBody, options: .prettyPrinted),
-            let url = URL(string: urlPath.image.appending("/\(article.id)"))
-            else {
-                return completion(.failure(.articleJSONSerializationFail))
-        }
+        guard let url = URL(string: urlPath.image.appending("/\(article.id)")) else { return completion(.failure(.articleJSONSerializationFail)) }
         
         var request = URLRequest(url: url)
-        request.httpMethod = RequestMethod.post
-        request.httpBody = body
-        request.addValue(RequestHeader.Value.formData, forHTTPHeaderField: RequestHeader.Field.contentType)
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.httpMethod = RequestMethod.put
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: RequestHeader.Field.contentType)
+        
+        request.httpBody = createBody(parameters: parameters,
+                                      boundary: boundary,
+                                      data: imageData,
+                                      mimeType: "image/jpeg",
+                                      filename: "article.jpg")
         
         let task = session.dataTask(with: request) { (data, response, error) in
             self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
-                let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any],
-                let article = articleJSON
+                let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any],
+                let articles = articleJSON
                 else {
                     return completion(.failure(.articleJSONSerializationFail))
             }
             
-            guard let resultArticle = Article(jsonData: article) else { return completion(.failure(.articleInitializationFail)) }
+            guard let resultArticle = Article(jsonData: articles) else { return completion(.failure(.articleInitializationFail)) }
+
             completion(.success([resultArticle]))
         }
         task.resume()
@@ -289,13 +292,13 @@ class BoostCampAPI {
             self.logResponse(data: data, response: response, error: error)
             
             guard let jsonData = data,
-                let jsonArticle = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any],
-                let article = jsonArticle
+                let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any],
+                let articles = articleJSON
                 else {
                     return completion(.failure(.articleJSONSerializationFail))
             }
-
-            guard let resultArticle = Article(jsonData: article) else { return completion(.failure(.articleInitializationFail)) }
+            
+            guard let resultArticle = Article(jsonData: articles) else { return completion(.failure(.articleInitializationFail)) }
             completion(.success([resultArticle]))
         }
         task.resume()
@@ -309,7 +312,7 @@ class BoostCampAPI {
         {
             print("response status : \(httpResponse.statusCode)")
             print("error : \(error?.localizedDescription)")
-//            print("data : \(jsonObject)")
+            print("data : \(jsonObject)")
         }
     }
     

@@ -73,8 +73,15 @@ class Article {
         self.apiVersion = apiVersion
     }
     
+    // For Post
     convenience init(title: String, description: String, image: UIImage) {
         self.init(id: "", createdAt: Date(), thumbImageURL: "", imageURL: "", authorNickname: "", author: "", imageDescription: description, imageTitle: title, apiVersion: "")
+        self.image = image
+    }
+    
+    // For Update, Delete
+    convenience init(id: String, title: String, description: String, image: UIImage) {
+        self.init(id: id, createdAt: Date(), thumbImageURL: "", imageURL: "", authorNickname: "", author: "", imageDescription: description, imageTitle: title, apiVersion: "")
         self.image = image
     }
     

@@ -462,7 +462,7 @@
             </objects>
             <point key="canvasLocation" x="3846" y="-355"/>
         </scene>
-        <!--Title-->
+        <!--Article Detail View Controller-->
         <scene sceneID="sSg-MK-OU0">
             <objects>
                 <viewController id="xjj-99-dZJ" customClass="ArticleDetailViewController" customModule="ImageBoard" customModuleProvider="target" sceneMemberID="viewController">
@@ -494,29 +494,39 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ci-ga-pv0">
-                                <rect key="frame" x="24" y="326.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3NU-es-nkh">
+                                <rect key="frame" x="24" y="326" width="327" height="284"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zet-Un-0l6" firstAttribute="leading" secondItem="gPc-tQ-lhj" secondAttribute="leadingMargin" constant="8" id="A7r-6s-1A9"/>
                             <constraint firstItem="Zet-Un-0l6" firstAttribute="top" secondItem="bZg-lZ-MAf" secondAttribute="bottom" constant="8" id="ACf-NL-qTe"/>
-                            <constraint firstItem="6Ci-ga-pv0" firstAttribute="leading" secondItem="gPc-tQ-lhj" secondAttribute="leadingMargin" constant="8" id="Byf-Yu-bFq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3NU-es-nkh" secondAttribute="trailing" constant="8" id="IaL-Oq-kqc"/>
                             <constraint firstItem="bZg-lZ-MAf" firstAttribute="height" secondItem="gPc-tQ-lhj" secondAttribute="height" multiplier="1:3" id="JMl-Qn-G6s"/>
                             <constraint firstItem="D8s-py-1l7" firstAttribute="leading" secondItem="Zet-Un-0l6" secondAttribute="trailing" constant="8" id="Jvz-cb-oJO"/>
                             <constraint firstItem="bZg-lZ-MAf" firstAttribute="top" secondItem="Okl-XK-u6z" secondAttribute="bottom" id="NCW-Um-hNg"/>
                             <constraint firstAttribute="trailing" secondItem="bZg-lZ-MAf" secondAttribute="trailing" id="QKL-By-xfx"/>
-                            <constraint firstItem="6Ci-ga-pv0" firstAttribute="top" secondItem="Zet-Un-0l6" secondAttribute="bottom" constant="8" id="bF7-ik-l8H"/>
+                            <constraint firstItem="Fq3-Nw-saO" firstAttribute="top" secondItem="3NU-es-nkh" secondAttribute="bottom" constant="8" id="QwI-0d-Hqo"/>
+                            <constraint firstItem="3NU-es-nkh" firstAttribute="top" secondItem="Zet-Un-0l6" secondAttribute="bottom" constant="8" id="dgV-31-GO0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D8s-py-1l7" secondAttribute="trailing" constant="8" id="iry-6g-izX"/>
+                            <constraint firstItem="3NU-es-nkh" firstAttribute="leading" secondItem="gPc-tQ-lhj" secondAttribute="leadingMargin" constant="8" id="mON-De-KHV"/>
                             <constraint firstItem="bZg-lZ-MAf" firstAttribute="leading" secondItem="gPc-tQ-lhj" secondAttribute="leading" id="z3A-B4-lsF"/>
                             <constraint firstItem="D8s-py-1l7" firstAttribute="top" secondItem="bZg-lZ-MAf" secondAttribute="bottom" constant="8" id="z6r-du-PUv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="rMa-ps-zbh">
+                    <navigationItem key="navigationItem" id="rMa-ps-zbh">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="exV-P8-zgX">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="trash" id="dme-ae-sY5">
                                 <connections>
@@ -532,45 +542,22 @@
                     </navigationItem>
                     <connections>
                         <outlet property="articleImageView" destination="bZg-lZ-MAf" id="41c-Jo-gE9"/>
+                        <outlet property="articleTitleField" destination="exV-P8-zgX" id="tdN-Ya-aqe"/>
                         <outlet property="authorNicknameLabel" destination="Zet-Un-0l6" id="Kyf-Iq-bQO"/>
                         <outlet property="createdAtLabel" destination="D8s-py-1l7" id="bKk-Ln-dIT"/>
                         <outlet property="editBarButton" destination="jV2-E8-1Iz" id="l2h-ba-6oc"/>
-                        <outlet property="imageDescriptionLabel" destination="6Ci-ga-pv0" id="KPN-6p-W0B"/>
+                        <outlet property="imageDescriptionTextView" destination="3NU-es-nkh" id="9AD-xx-vXB"/>
                         <outlet property="trashBarButton" destination="dme-ae-sY5" id="qBk-T1-bct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLV-cZ-zKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="k8D-FT-B7G">
                     <connections>
-                        <segue destination="bFo-dZ-Be3" kind="show" id="Ms7-9x-b69"/>
+                        <action selector="articleImageViewDidTap:" destination="xjj-99-dZJ" id="iQv-ec-Syo"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2916" y="-1218.440779610195"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="dy8-Om-i9m">
-            <objects>
-                <viewController id="bFo-dZ-Be3" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0ZC-Lj-3FW"/>
-                        <viewControllerLayoutGuide type="bottom" id="dFm-ND-Fpq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RIM-8A-3dg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MIJ-0T-Xzf">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YOA-4A-cPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3783" y="-1218"/>
         </scene>
         <!--Table-->
         <scene sceneID="aNS-bF-YgB">
