@@ -10,6 +10,7 @@ import UIKit
 
 class Article {
     
+    // JSONKey
     struct jsonKey {
         static let id = "_id"
         static let createdAt = "created_at"
