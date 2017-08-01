@@ -93,6 +93,8 @@ extension BRImageView {
     public override func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         
         let percentageWritten = (Double(totalBytesWritten) / Double(totalBytesExpectedToWrite))
-        self.downloadProgressView.setProgress(Float(percentageWritten), animated: true)
+        DispatchQueue.main.async {
+            self.downloadProgressView.setProgress(Float(percentageWritten), animated: true)
+        }
     }
 }
