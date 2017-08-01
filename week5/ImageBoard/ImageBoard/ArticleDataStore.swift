@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ArticleFilterType {
+    case all
+    case me
+}
+
 class ArticleDataStore: NSObject {
     
     static let shared = ArticleDataStore()
@@ -21,6 +26,7 @@ class ArticleDataStore: NSObject {
         case .all:
             return articles
         case .me:
+            print(articles.first?.author)
             return articles.filter { $0.author == self.currentUser?.id }
         }
     }

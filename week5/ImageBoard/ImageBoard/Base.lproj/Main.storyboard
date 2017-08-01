@@ -75,7 +75,18 @@
                             <constraint firstItem="uiD-S2-qVL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wmP-pK-cRq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="로그인" id="qeJ-qI-kmr"/>
+                    <navigationItem key="navigationItem" title="로그인" id="qeJ-qI-kmr">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="bOP-BO-fvT">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C5f-n6-v5t">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipBarButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FIU-Sk-w4B"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="xFc-Us-gJp" id="6vr-4t-MKy"/>
                         <outlet property="passwordTextField" destination="Svc-r3-sZM" id="jez-O0-TQT"/>

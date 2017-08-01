@@ -193,6 +193,7 @@ class BoostCampAPI {
         guard let body = try? JSONSerialization.data(withJSONObject: jsonBody, options: .prettyPrinted),
             let url = URL(string: urlPath.image)
             else {
+                print("1fail")
                 return completion(.failure(.articleJSONSerializationFail))
         }
         
@@ -208,10 +209,12 @@ class BoostCampAPI {
                 let articleJSON = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any],
                 let article = articleJSON
             else {
+                print("2fail2")
                 return completion(.failure(.articleJSONSerializationFail))
             }
-
+            
             guard let resultArticle = Article(jsonData: article) else { return completion(.failure(.articleInitializationFail)) }
+            print("3fail")
             completion(.success([resultArticle]))
         }
         task.resume()

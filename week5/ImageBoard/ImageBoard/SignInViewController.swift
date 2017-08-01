@@ -19,6 +19,10 @@ class SignInViewController: UIViewController {
     var user: User?
     
     // IBAction
+    @IBAction func skipBarButtonDidTap(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func signInButtonTap(_ sender: UIButton) {
         guard let email = self.emailTextField.text,
             let password = self.passwordTextField.text
@@ -32,6 +36,7 @@ class SignInViewController: UIViewController {
             case let .success(user):
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
+                    ArticleDataStore.shared.currentUser = user
                     NotificationCenter.default.post(name: UserSignInSuccess, object: user)
                 }
                 break

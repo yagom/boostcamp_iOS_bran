@@ -8,19 +8,11 @@
 
 import UIKit
 
-enum ArticleFilterType {
-    case all
-    case me
-}
-
 class ArticleTableViewController: UITableViewController {
     
     // Data Properties.
     var selectedArticle: Article?
-    
-    // User
-    var user: User?
-    
+
     // Control RefreshControl
     var isDownloading: Bool = false {
         didSet {
@@ -57,7 +49,10 @@ class ArticleTableViewController: UITableViewController {
     }
     
     @objc func didUserSignIn(sender: NSNotification){
+        print("Get Noti")
+        
         guard let user = sender.object as? User else { return }
+        print(user.id)
         self.user = user
     }
     
@@ -97,7 +92,8 @@ class ArticleTableViewController: UITableViewController {
         self.tableView.refreshControl = UIRefreshControl()
         
         let signInViewControllerNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewControllerNavigationController")
-//        self.present(signInViewControllerNavigationController, animated: false, completion: nil)
+        
+        self.present(signInViewControllerNavigationController, animated: false, completion: nil)
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

@@ -11,7 +11,6 @@ import UIKit
 class ArticleCollectionViewController: UICollectionViewController {
     
     // Properties
-    var user: User?
     var isDownloading = false
     
     // IBActions
