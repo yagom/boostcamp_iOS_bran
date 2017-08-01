@@ -26,7 +26,7 @@ class ArticleDetailViewController: UIViewController {
     var delegate: ArticleDetailViewControllerDelegate?
     
     @IBAction func editBarButtonDidTap(_ sender: UIBarButtonItem) {
-        
+        self.navigationItem.titleView = UITextField()
     }
     
     @IBAction func trashBarButtonDidTap(_ sender: UIBarButtonItem) {
@@ -42,8 +42,8 @@ class ArticleDetailViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.navigationController?.popViewController(animated: true)
                         guard let articleDeleted = articles.first else { return }
+                        
                         self.delegate?.articleDetailViewController(self, didDeleteArticle: articleDeleted)
-                        print("delete : \(articleDeleted.imageTitle)")
                     }
                 case let .failure(error):
                     print(error)

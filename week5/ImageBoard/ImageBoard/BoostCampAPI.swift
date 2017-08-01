@@ -309,7 +309,7 @@ class BoostCampAPI {
         {
             print("response status : \(httpResponse.statusCode)")
             print("error : \(error?.localizedDescription)")
-            print("data : \(jsonObject)")
+//            print("data : \(jsonObject)")
         }
     }
     

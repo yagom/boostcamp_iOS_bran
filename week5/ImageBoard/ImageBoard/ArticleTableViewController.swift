@@ -110,6 +110,7 @@ class ArticleTableViewController: UITableViewController {
             self.selectedArticle = ArticleDataStore.shared.visibleArticles[(self.tableView.indexPath(for: cell)?.row)!]
             guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
             articleDetailViewController.article = self.selectedArticle
+            articleDetailViewController.delegate = self
             articleDetailViewController.user = ArticleDataStore.shared.currentUser
         }
     }
@@ -125,16 +126,16 @@ extension ArticleTableViewController: ArticleUploadViewControllerDelegate {
 extension ArticleTableViewController: ArticleDetailViewControllerDelegate {
     
     func articleDetailViewController(_: ArticleDetailViewController, didDeleteArticle article: Article) {
-        
-    }
-    
-    func articleDetailViewController(_: ArticleDetailViewController, didUpdateArticle article: Article) {
         guard let itemIndex = ArticleDataStore.shared.articles?.index(where: { (compareArticle) -> Bool in
             return (compareArticle.id == article.id)
         }) else { return }
+        
         ArticleDataStore.shared.articles?.remove(at: itemIndex)
         let indexPath = IndexPath(row: itemIndex, section: 0)
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func articleDetailViewController(_: ArticleDetailViewController, didUpdateArticle article: Article) {
         
     }
 }
