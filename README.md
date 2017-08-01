@@ -2,6 +2,8 @@
 
 ### 질문
 
+### 생각해보기
+
 #### NotificationCenter
 
 - NotificationCenter를 통해 object를 전달받으려면 NSObject를 준수해야합니다.
