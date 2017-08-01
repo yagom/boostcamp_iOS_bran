@@ -10,7 +10,7 @@ import UIKit
 
 class ImageDetailViewController: UIViewController {
     
-    private var scrollView: UIScrollView = {
+    fileprivate var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.maximumZoomScale = 3
@@ -21,7 +21,6 @@ class ImageDetailViewController: UIViewController {
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -30,15 +29,19 @@ class ImageDetailViewController: UIViewController {
         
         self.scrollView.addSubview(self.imageView)
         self.view.addSubview(self.scrollView)
+        self.imageView.frame = self.view.frame
         
         self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         self.scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-        self.imageView.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
-        self.imageView.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor).isActive = true
-        self.imageView.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor).isActive = true
-        self.imageView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+        self.scrollView.delegate = self
+    }
+}
+
+extension ImageDetailViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imageView
     }
 }
