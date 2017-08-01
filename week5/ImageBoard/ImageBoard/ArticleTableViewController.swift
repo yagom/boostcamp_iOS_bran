@@ -103,7 +103,11 @@ class ArticleTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowArticleUploadViewController" {
-            guard let articleUploadViewController = segue.destination as? ArticleUploadViewController else { return }
+            guard let articleUploadViewControllerNavigationController = segue.destination as? UINavigationController,
+                let articleUploadViewController = articleUploadViewControllerNavigationController.topViewController as? ArticleUploadViewController
+            else {
+                return
+            }
             articleUploadViewController.delegate = self
         } else if segue.identifier == "ShowArticleDetailViewController" {
             guard let cell = sender as? UITableViewCell else { return }
@@ -117,9 +121,13 @@ class ArticleTableViewController: UITableViewController {
 }
 
 extension ArticleTableViewController: ArticleUploadViewControllerDelegate {
-    
-    func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: ArticleResult) {
-        self.tableView.reloadData()
+    func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: Article) {
+        ArticleDataStore.shared.articles?.insert(article, at: 0)
+        let newIndexPath = IndexPath(item: 0, section: 0)
+        self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+        
+        guard let cell = self.tableView.cellForRow(at: newIndexPath) as? ArticleTableViewCell else { return }
+        cell.articleImageView.downloadImage(path: article.downloadThumbImageURL)
     }
 }
 
@@ -130,12 +138,18 @@ extension ArticleTableViewController: ArticleDetailViewControllerDelegate {
             return (compareArticle.id == article.id)
         }) else { return }
         
+        
         ArticleDataStore.shared.articles?.remove(at: itemIndex)
         let indexPath = IndexPath(row: itemIndex, section: 0)
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     func articleDetailViewController(_: ArticleDetailViewController, didUpdateArticle article: Article) {
+        guard let itemIndex = ArticleDataStore.shared.articles?.index(where: { (compareArticle) -> Bool in
+            return (compareArticle.id == article.id)
+        }) else { return }
         
+        let indexPath = IndexPath(row: itemIndex, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

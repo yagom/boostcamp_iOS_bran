@@ -240,7 +240,7 @@ class BoostCampAPI {
         let session = URLSession.shared
         
         guard let image = article.image,
-            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            let imageData = UIImageJPEGRepresentation(image, 0.2)
         else {
             return
         }
@@ -312,7 +312,7 @@ class BoostCampAPI {
         {
             print("response status : \(httpResponse.statusCode)")
             print("error : \(error?.localizedDescription)")
-            print("data : \(jsonObject)")
+//            print("data : \(jsonObject)")
         }
     }
     

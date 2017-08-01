@@ -85,7 +85,9 @@ class ArticleDetailViewController: UIViewController {
         BoostCampAPI.shared.updateArticle(with: articleEdited) { (articleResult) in
             switch articleResult {
             case let .success(article):
+                
                 guard let articleUpdated = article.first else { return }
+                
                 DispatchQueue.main.async {
                     self.article?.id = articleUpdated.id
                     self.article?.thumbImageURL = articleUpdated.thumbImageURL
@@ -94,6 +96,7 @@ class ArticleDetailViewController: UIViewController {
                     self.article?.imageDescription = articleUpdated.imageDescription
                     self.article?.imageTitle = articleUpdated.imageTitle
                     self.article?.image = articleUpdated.image
+                    self.delegate?.articleDetailViewController(self, didUpdateArticle: articleUpdated)
                 }
             case let .failure(error):
                 print("error : \(error)")
@@ -119,6 +122,7 @@ class ArticleDetailViewController: UIViewController {
             BoostCampAPI.shared.deleteArticle(with: articleToDelete) { (articleResult) in
                 switch articleResult {
                 case let .success(articles):
+                    
                     DispatchQueue.main.async {
                         self.navigationController?.popViewController(animated: true)
                         guard let articleDeleted = articles.first else { return }

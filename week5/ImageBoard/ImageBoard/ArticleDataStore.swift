@@ -19,11 +19,17 @@ class ArticleDataStore: NSObject {
     
     var currentUser: User?
     var filterType: ArticleFilterType = .all
-    var articles: [Article]?
+    var articles: [Article]? {
+        didSet {
+            self.articles = articles?.sorted { $0.createdAt > $1.createdAt }
+        }
+    }
     var visibleArticles: [Article] {
         guard let articles = self.articles else { return [] }
         switch self.filterType {
         case .all:
+            // TODO: This is called too much, which lower performance.
+            // I should think different way to show articles sorted or filtered.
             return articles
         case .me:
             return articles.filter { $0.author == self.currentUser?.id }
@@ -88,6 +94,7 @@ extension ArticleDataStore: UICollectionViewDataSource {
             return cell
         }
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as? ArticleCollectionViewCell {
+            
             cell.articleImageView.downloadImage(path: article.downloadThumbImageURL)
             cell.imageTitleLabel.text = article.imageTitle
             cell.authorNicknameLabel.text = article.authorNickname

@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol ArticleUploadViewControllerDelegate: AnyObject {
-    func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: ArticleResult)
+protocol ArticleUploadViewControllerDelegate {
+    func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: Article)
 }
 
 class ArticleUploadViewController: UIViewController {
@@ -18,7 +18,7 @@ class ArticleUploadViewController: UIViewController {
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var articleDescriptionTextView: UITextView!
     
-    weak var delegate: ArticleUploadViewControllerDelegate?
+    var delegate: ArticleUploadViewControllerDelegate?
     
     @IBAction func doneBarButtonDidTap(_ sender: UIBarButtonItem) {
         guard let title = self.articleTitleField.text,
@@ -33,9 +33,12 @@ class ArticleUploadViewController: UIViewController {
         BoostCampAPI.shared.postArticle(with: newArticle) { (articleResult) in
             switch articleResult {
             case let .success(articles):
-                print(articles.count)
-                self.dismiss(animated: true, completion: nil)
                 
+                guard let article = articles.first else { return }
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                    self.delegate?.articleUploadViewController(self, didUploadWith: article) 
+                }
             case let .failure(error):
                 print(error)
             }

@@ -249,7 +249,7 @@
                     <navigationItem key="navigationItem" id="WYf-08-gcX">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="77R-b9-5sQ">
                             <connections>
-                                <segue destination="QLm-1x-i0y" kind="presentation" id="ctF-fc-nPj"/>
+                                <segue destination="QLm-1x-i0y" kind="presentation" identifier="ShowArticleUploadViewController" id="ctF-fc-nPj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="organize" id="cy2-0l-47N">

@@ -90,7 +90,7 @@ class ArticleCollectionViewController: UICollectionViewController {
 }
 
 extension ArticleCollectionViewController: ArticleUploadViewControllerDelegate {
-    func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: ArticleResult) {
+    func articleUploadViewController(_: ArticleUploadViewController, didUploadWith article: Article) {
         self.collectionView?.reloadData()
     }
 }
