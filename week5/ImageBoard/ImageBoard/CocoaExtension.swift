@@ -42,6 +42,4 @@ extension UIImageView: URLSessionDownloadDelegate {
         let percentageWritten = (Double(totalBytesWritten) / Double(totalBytesExpectedToWrite))
         print("\(Int(percentageWritten * 100))%")
     }
-    
-    
 }

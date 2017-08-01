@@ -9,7 +9,6 @@
 import UIKit
 
 class ArticleCollectionViewFlowLayout: UICollectionViewFlowLayout {
-
     
     override func prepare() {
         super.prepare()

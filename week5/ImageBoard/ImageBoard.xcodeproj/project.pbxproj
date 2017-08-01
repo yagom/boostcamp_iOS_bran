@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A54DEEC31F2DEAE700471E5C /* CocoaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DEEC21F2DEAE700471E5C /* CocoaExtension.swift */; };
+		A54DEEC51F2E009600471E5C /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DEEC41F2E009600471E5C /* ArticleDetailViewController.swift */; };
+		A54DEEC71F2E058900471E5C /* BRImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DEEC61F2E058900471E5C /* BRImageView.swift */; };
+		A57298201F2FAF1A00586ACD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A572981F1F2FAF1A00586ACD /* SignUpViewController.swift */; };
+		A57298241F304DC700586ACD /* ArticleUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298231F304DC700586ACD /* ArticleUploadViewController.swift */; };
+		A57298281F30740200586ACD /* ArticleDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57298271F30740200586ACD /* ArticleDataStore.swift */; };
 		A5B551211F2CB94A00A95A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B551201F2CB94A00A95A53 /* AppDelegate.swift */; };
-		A5B551231F2CB94A00A95A53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B551221F2CB94A00A95A53 /* ViewController.swift */; };
+		A5B551231F2CB94A00A95A53 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B551221F2CB94A00A95A53 /* SignInViewController.swift */; };
 		A5B551261F2CB94A00A95A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B551241F2CB94A00A95A53 /* Main.storyboard */; };
 		A5B551281F2CB94A00A95A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B551271F2CB94A00A95A53 /* Assets.xcassets */; };
 		A5B5512B1F2CB94A00A95A53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B551291F2CB94A00A95A53 /* LaunchScreen.storyboard */; };
@@ -34,9 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A54DEEC21F2DEAE700471E5C /* CocoaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaExtension.swift; sourceTree = "<group>"; };
+		A54DEEC41F2E009600471E5C /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		A54DEEC61F2E058900471E5C /* BRImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BRImageView.swift; sourceTree = "<group>"; };
+		A572981F1F2FAF1A00586ACD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A57298231F304DC700586ACD /* ArticleUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleUploadViewController.swift; sourceTree = "<group>"; };
+		A57298271F30740200586ACD /* ArticleDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDataStore.swift; sourceTree = "<group>"; };
 		A5B5511D1F2CB94A00A95A53 /* ImageBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B551201F2CB94A00A95A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5B551221F2CB94A00A95A53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5B551221F2CB94A00A95A53 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A5B551251F2CB94A00A95A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5B551271F2CB94A00A95A53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5B5512A1F2CB94A00A95A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,6 +84,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A57298211F3035EA00586ACD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5B551221F2CB94A00A95A53 /* SignInViewController.swift */,
+				A572981F1F2FAF1A00586ACD /* SignUpViewController.swift */,
+				A57298231F304DC700586ACD /* ArticleUploadViewController.swift */,
+				A5B551491F2CD7E300A95A53 /* ArticleTableViewController.swift */,
+				A54DEEC41F2E009600471E5C /* ArticleDetailViewController.swift */,
+				A5B5514D1F2CE41700A95A53 /* ArticleCollectionViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A57298221F30360300586ACD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5B5514B1F2CD93300A95A53 /* ArticleTableViewCell.swift */,
+				A5B551511F2CE76F00A95A53 /* ArticleCollectionViewFlowLayout.swift */,
+				A5B5514F1F2CE42200A95A53 /* ArticleCollectionViewCell.swift */,
+				A54DEEC61F2E058900471E5C /* BRImageView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A57298251F306EBA00586ACD /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				A57298271F30740200586ACD /* ArticleDataStore.swift */,
+				A5B551321F2CBC2100A95A53 /* BoostCampAPI.swift */,
+				A54DEEC21F2DEAE700471E5C /* CocoaExtension.swift */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
+		A57298261F306ECA00586ACD /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A5B551241F2CB94A00A95A53 /* Main.storyboard */,
+				A5B551291F2CB94A00A95A53 /* LaunchScreen.storyboard */,
+				A5B551271F2CB94A00A95A53 /* Assets.xcassets */,
+				A5B5512C1F2CB94A00A95A53 /* Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		A5B551141F2CB94A00A95A53 = {
 			isa = PBXGroup;
 			children = (
@@ -94,18 +151,11 @@
 			isa = PBXGroup;
 			children = (
 				A5B551201F2CB94A00A95A53 /* AppDelegate.swift */,
-				A5B551221F2CB94A00A95A53 /* ViewController.swift */,
-				A5B551491F2CD7E300A95A53 /* ArticleTableViewController.swift */,
-				A5B5514B1F2CD93300A95A53 /* ArticleTableViewCell.swift */,
-				A5B5514D1F2CE41700A95A53 /* ArticleCollectionViewController.swift */,
-				A5B551511F2CE76F00A95A53 /* ArticleCollectionViewFlowLayout.swift */,
-				A5B5514F1F2CE42200A95A53 /* ArticleCollectionViewCell.swift */,
-				A5B551321F2CBC2100A95A53 /* BoostCampAPI.swift */,
+				A57298211F3035EA00586ACD /* Controller */,
+				A57298221F30360300586ACD /* View */,
+				A57298251F306EBA00586ACD /* Global */,
 				A5B551381F2CBD3800A95A53 /* Model */,
-				A5B551241F2CB94A00A95A53 /* Main.storyboard */,
-				A5B551271F2CB94A00A95A53 /* Assets.xcassets */,
-				A5B551291F2CB94A00A95A53 /* LaunchScreen.storyboard */,
-				A5B5512C1F2CB94A00A95A53 /* Info.plist */,
+				A57298261F306ECA00586ACD /* SupportingFiles */,
 			);
 			path = ImageBoard;
 			sourceTree = "<group>";
@@ -233,13 +283,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54DEEC31F2DEAE700471E5C /* CocoaExtension.swift in Sources */,
+				A54DEEC71F2E058900471E5C /* BRImageView.swift in Sources */,
 				A5B551351F2CBD1D00A95A53 /* Article.swift in Sources */,
-				A5B551231F2CB94A00A95A53 /* ViewController.swift in Sources */,
+				A57298241F304DC700586ACD /* ArticleUploadViewController.swift in Sources */,
+				A54DEEC51F2E009600471E5C /* ArticleDetailViewController.swift in Sources */,
+				A5B551231F2CB94A00A95A53 /* SignInViewController.swift in Sources */,
 				A5B551211F2CB94A00A95A53 /* AppDelegate.swift in Sources */,
 				A5B551501F2CE42200A95A53 /* ArticleCollectionViewCell.swift in Sources */,
 				A5B551371F2CBD3300A95A53 /* User.swift in Sources */,
+				A57298201F2FAF1A00586ACD /* SignUpViewController.swift in Sources */,
 				A5B5514A1F2CD7E300A95A53 /* ArticleTableViewController.swift in Sources */,
 				A5B5514C1F2CD93300A95A53 /* ArticleTableViewCell.swift in Sources */,
+				A57298281F30740200586ACD /* ArticleDataStore.swift in Sources */,
 				A5B551331F2CBC2100A95A53 /* BoostCampAPI.swift in Sources */,
 				A5B551521F2CE76F00A95A53 /* ArticleCollectionViewFlowLayout.swift in Sources */,
 				A5B5514E1F2CE41700A95A53 /* ArticleCollectionViewController.swift in Sources */,
@@ -450,6 +506,7 @@
 				A5B551311F2CB94A00A95A53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5B551461F2CCEB000A95A53 /* Build configuration list for PBXNativeTarget "ImageBoardTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +515,7 @@
 				A5B551481F2CCEB000A95A53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
