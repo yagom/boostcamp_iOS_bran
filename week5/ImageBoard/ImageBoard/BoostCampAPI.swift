@@ -93,6 +93,7 @@ class BoostCampAPI {
             
             var resultArticles: [Article] = []
             
+            // JSON 객체마다 매 번 Article 객체로 변환해줘야 한다면, Article 갯수가 많아진다면 어떤 영향을 받게될까요?
             for article in articles {
                 guard let newArticle = Article(jsonData: article) else { continue }
                 resultArticles.append(newArticle)
